@@ -1,0 +1,121 @@
+.hc {
+    position: relative;
+    /* Positions the element relative to its normal position */
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    /* Adds a box shadow */
+    width: 18rem;
+    /* Sets the width of the element */
+    border-radius: 1rem;
+    /* Rounds the corners of the element */
+    margin: 2%;
+    /* Adds margin around the element */
+    padding: 0;
+    /* Removes padding inside the element */
+    transition: all ease 0.2s;
+    /* Adds a smooth transition effect */
+    background-color: white;
+    /* Sets the background color */
+  }
+  
+  .hc:hover {
+    transform: translateY(-5px);
+    /* Applies a vertical translation on hover */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* Changes the box shadow on hover */
+  }
+  
+  .cardTitle {
+    font-family: 'Raleway';
+    /* Sets the font family */
+    font-size: 2rem;
+    /* Sets the font size */
+    font-weight: bolder;
+    /* Sets the font weight */
+    text-align: center;
+    /* Centers the text horizontally */
+    padding: 3rem 0 0 0;
+    /* Adds padding to the top of the element */
+  }
+  
+  .cardSubTitle {
+    color: #a3a3a3;
+    /* Sets the text color */
+    font-family: 'Raleway';
+    /* Sets the font family */
+    font-size: 0.7rem;
+    /* Sets the font size */
+    text-align: center;
+    /* Centers the text horizontally */
+  }
+  
+  .cardBody {
+    display: flex;
+    /* Displays the element as a flex container */
+    flex-direction: column;
+    /* Sets the flex direction to column */
+    height: 100%;
+    /* Sets the height of the element to 100% */
+  }
+  
+  .updateBtnContainer {
+    flex: 1;
+    /* Takes up remaining space within the flex container */
+    display: flex;
+    /* Displays the element as a flex container */
+    align-items: center;
+    /* Centers the content vertically */
+    justify-content: center;
+    /* Centers the content horizontally */
+  }
+  
+  .updateBtn {
+    width: 50%;
+    /* Sets the width of the button */
+    height: 2.5rem;
+    /* Sets the height of the button */
+    border-radius: 2rem;
+    /* Rounds the corners of the button */
+    border: none;
+    /* Removes the button border */
+    background-color: #056FC6;
+    /* Sets the background color of the button */
+    color: white;
+    /* Sets the text color of the button */
+    font-family: 'Raleway';
+    /* Sets the font family */
+    cursor: pointer;
+    /* Changes the cursor to a pointer on hover */
+    display: flex;
+    /* Displays the element as a flex container */
+    align-items: center;
+    /* Centers the content vertically */
+    justify-content: center;
+    /* Centers the content horizontally */
+    transition-duration: 0.3s;
+    /* Sets the duration of the transition effect */
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    /* Adds a box shadow to the button */
+  }
+  
+  .updateBtn:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* Changes the box shadow on hover */
+  }
+  
+  .updateBtn:active {
+    background-color: #04589E;
+    /* Changes the background color on button press */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* Changes the box shadow on button press */
+    transform: translateY(3px);
+    /* Applies a vertical translation on button press */
+  }
+  
+  .container {
+    display: flex;
+    /* Displays the element as a flex container */
+    flex-wrap: wrap;
+    /* Allows the flex items to wrap to the next line */
+    justify-content: center;
+    /* Centers the flex items horizontally */
+  }
