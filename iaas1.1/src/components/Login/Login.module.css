@@ -44,7 +44,7 @@ label {
   margin-bottom: 5px;
   color: #484848;
   font-family: 'Raleway', sans-serif;
-  font-size: 14px;
+  font-size: 2rem;
 }
 
 input {
@@ -53,12 +53,13 @@ input {
   border: none;
   font-family: 'Raleway', sans-serif;
   width: 50vh;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   outline: none;
 }
 
 .input:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transform: translateY(-5px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .input:active {
@@ -77,17 +78,17 @@ input {
   cursor: pointer;
   width: 50vh;
   transition-duration: 0.2s;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .roundedButton:hover{
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transform: translateY(-5px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .roundedButton:active {
   background-color: #04589E;  /* If the button colour is blue  */
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  transform: translateY(3px);
+  /* transform: translateY(0px); */
 }
 /* Responsive Styles */
 @media (max-width: 768px) {

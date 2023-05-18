@@ -39,12 +39,13 @@
     border-radius: 2.5rem;
     border: none;
     font-family: 'Raleway', sans-serif;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     outline: none;
   }
 
   .input:hover{
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transform: translateY(-5px);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 
   .input:active {
