@@ -1,37 +1,28 @@
-import React from 'react'
+import React from 'react';
+import styles from './Login.module.css';
 
-const Login = () => {
+function Login() {
   return (
-    <div className={styles.rightSide}>
-    <div className={styles.textCenter}>
-      <h1 className={`${styles.heading} ${styles.mb5}`}>Admin Console</h1>
+    <div className={styles.loginContainer}>
+      <div className={styles.leftColumn}>
+        <h1 className={styles.welcomeText}>Welcome to JobskulHire</h1>
+      </div>
+      <div className={styles.rightColumn}>
+        <h2 className={styles.formHeading}>Admin Console</h2>
+        <form>
+          <div className={styles.formGroup}>
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" className={styles.roundedInput} />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" className={styles.roundedInput} />
+          </div>
+          <button type="submit" className={styles.roundedButton}>Login</button>
+        </form>
+      </div>
     </div>
-    <form>
-      <div className={styles.mb4}>
-        <label className={styles.label}>Email address</label>
-        <input
-          className={`${styles.inputField} ${styles.formControl}`}
-          type="email"
-          name="email"
-        />
-      </div>
-      <div className={styles.mb4}>
-        <label className={styles.label}>Password</label>
-        <input
-          className={`${styles.inputField} ${styles.formControl}`}
-          type="password"
-          name="password"
-        />
-      </div>
-      <div className={`${styles.textCenter} ${styles.mb4}`}>
-        <a href="!#" className={styles.myfont}>Forgot password?</a>
-      </div>
-      <div className={styles.textCenter}>
-        <button type="submit" className={styles.submitBtn}>Submit</button>
-      </div>
-    </form>
-  </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
