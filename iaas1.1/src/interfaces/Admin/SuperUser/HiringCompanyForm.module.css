@@ -1,0 +1,78 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  .formHeading {
+    color: #A7A8A7;
+    font-size: 3rem;
+    font-family: 'Raleway', sans-serif;
+    margin-top: -5%;
+    margin-bottom: 5%;
+    text-align: center;
+  }
+  
+  .form {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .formGroup {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #484848;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 2.5rem;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    outline: none;
+  }
+
+  .input:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  .input:active {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  }
+  
+  .formButton {
+    margin-top: 5%;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 2.5rem;
+    align-items: center;
+    background-color: #056FC6;
+    color: #FFFFFF;
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  
+  .formButton:hover {
+    background-color: #045AA7;
+  }
+  
+  .formButton:active{
+    background-color: #04589E;  /* If the button colour is blue  */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: translateY(3px);
+  }
