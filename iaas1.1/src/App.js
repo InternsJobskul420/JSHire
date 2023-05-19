@@ -12,8 +12,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<NavigationBar/>}/>
-        <Route path='/login' element={<Login/>}/>
+        
+        <Route path='/' element={<Login/>}/> /* Set a page as home */
         <Route path='/hringcompanyform' element={<HiringCompnayForm/>}/>
         <Route path='/hringcompany' element={<HiringCompany/>}/>
 
