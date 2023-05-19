@@ -7,7 +7,7 @@ const CandidateShowMessage = (props) => {
      
         <div id="candidate-message">
           <div id="header">{props.header}</div>
-          <div id="description">{props.message}</div>
+          <div id="description">{props.description}</div>
         </div>
     
     </>
