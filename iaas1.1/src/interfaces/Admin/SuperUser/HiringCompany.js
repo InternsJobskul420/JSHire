@@ -7,6 +7,8 @@ export const HiringCompany = () => {
   return (
     <>
       <NavigationBar />
+
+      <h1 className={styles.formHeading}>Create An Account</h1>
       <div className={styles['display-cards']}>
         <HCCard />
         <HCCard />

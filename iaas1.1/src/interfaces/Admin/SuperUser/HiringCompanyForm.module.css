@@ -1,3 +1,7 @@
+body{
+  background-color: #FAFCFF;
+}
+
 .formContainer {
     display: flex;
     flex-direction: column;

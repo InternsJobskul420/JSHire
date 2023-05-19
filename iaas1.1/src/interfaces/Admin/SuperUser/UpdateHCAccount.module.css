@@ -1,0 +1,120 @@
+body{
+    background-color: #FAFCFF;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  .formHeading {
+    color: #A7A8A7;
+    font-size: 3rem;
+    font-family: 'Raleway', sans-serif;
+    margin-top: -5%;
+    margin-bottom: 5%;
+    text-align: center;
+  }
+  
+  .form {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .formGroup {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #484848;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 2.5rem;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    outline: none;
+  }
+
+  .input:hover{
+    transform: translateY(-5px);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .input:active {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  }
+
+  .stylingButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 10%;
+}
+  
+  .formUpdateButton {
+    background-color: #056FC6;
+    width: 45%;
+    height: 2.5rem;
+    border-radius: 2rem;
+    border: none;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 1000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.3s;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+  
+  .formUpdateButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+  .formUpdateButton:active{
+    background-color: #04589E;  /* If the button colour is blue  */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: translateY(3px);
+  }
+
+  .formDeactivateButton {
+    background-color: #D52E2D; /* If the button colour is red  */
+    width: 45%;
+    height: 2.5rem;
+    border-radius: 2rem;
+    border: none;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 1000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.3s;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+  
+  .formDeactivateButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+  .formDeactivateButton:active{
+    background-color: #aa2424;  /* If the button colour is blue  */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: translateY(3px);
+  }

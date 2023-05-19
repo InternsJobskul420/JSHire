@@ -11,7 +11,7 @@ function Login() {
         <h2 className={styles.formHeading}>Admin Console</h2>
         <form>
           <div className={styles.formGroup}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">User Name</label>
             <input type="email" id="email" className={styles.roundedInput} />
           </div>
           <div className={styles.formGroup}>
