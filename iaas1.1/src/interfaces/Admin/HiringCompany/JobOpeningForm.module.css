@@ -1,0 +1,18 @@
+body {
+    background-color: #FAFCFF;
+  }
+
+.formHeading {
+    color: #A7A8A7;
+    font-size: 3rem;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    text-align: center;
+  }
+
+  .form-HCcontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
