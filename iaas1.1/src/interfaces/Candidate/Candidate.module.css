@@ -1,0 +1,18 @@
+.agreement{
+    display: flex;
+}
+
+.agreement input{
+    width: 2.5vw;
+    max-width: 5rem;
+    min-width: 1rem ;
+}
+
+.candiContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
