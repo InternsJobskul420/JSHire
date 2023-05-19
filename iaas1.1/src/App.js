@@ -8,6 +8,8 @@ import { HCCard } from './components/HCCard/HCCard';
 import { HiringCompany } from './interfaces/Admin/SuperUser/HiringCompany';
 import WelcomePage from './interfaces/Candidate/WelcomePage';
 import EndInterview from './interfaces/Candidate/EndInterview';
+import UpdateHCAccount from './interfaces/Admin/SuperUser/UpdateHCAccount';
+import { JobOpeningForm } from './interfaces/Admin/HiringCompany/JobOpeningForm';
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         <Route path='/candidateWelcome' element={<WelcomePage/>}/>
         <Route path='/EndInterview' element={<EndInterview/>}/>
 
+        <Route path='/updatehcaccount' element={<UpdateHCAccount/>}/>
+        <Route path='/jobopeningform' element={<JobOpeningForm/>}/>
        
       </Routes>
     </Router>
