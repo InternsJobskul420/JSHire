@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './NavigationBar.module.css'; // Import the CSS module
+import  jobskulLogo from '../../assets/jobskulLogo.svg';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +16,9 @@ const NavigationBar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.container}>
-        <div className={styles.logo}></div>
+        <div className={styles.logo}>
+          <img src={jobskulLogo} alt="Jobskul Logo" />
+        </div>
         <div className={styles['menu-icon']} onClick={handleShowNavbar}></div>
         <div className={`${styles['nav-elements']} ${showNavbar && styles.active}`}>
           <ul>
@@ -36,7 +39,7 @@ const NavigationBar = () => {
             </li>
           </ul>
         </div>
-        <FontAwesomeIcon className={styles.test} icon={faBars}/>
+        <FontAwesomeIcon className={styles.test} icon={faBars} />
       </div>
     </nav>
   );

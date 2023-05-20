@@ -1,0 +1,32 @@
+body {
+    background-color: #fafcff;
+  }
+  
+  .formHeading {
+    color: #a7a8a7;
+    font-size: 3rem;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    text-align: center;
+  }
+  
+  .display-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-right: 2%;
+    margin-left: 2%;
+  }
+  
+  /* Media Query for Small Screens (e.g., Mobile Phones) */
+  @media only screen and (max-width: 600px) {
+    .display-cards {
+      flex-direction: column;
+      align-items: center;
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+  

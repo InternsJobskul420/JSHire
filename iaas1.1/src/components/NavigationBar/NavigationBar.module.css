@@ -15,15 +15,19 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.logo {
+.jobskulLogo {
+  width: 50px; /* Set the width of the logo */
+height: 50px; /* Set the height of the logo */
+/* background-image: url(''); Optionally, set a background image for the logo */
+background-size: contain; /* Adjust the background image size */
 }
 
 .menu-icon {
   display: none;
 }
 
-.nav-elements {
-}
+/* .nav-elements {
+} */
 
 .nav-elements ul {
   display: flex;

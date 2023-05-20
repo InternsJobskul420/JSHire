@@ -11,6 +11,7 @@ import EndInterview from './interfaces/Candidate/EndInterview';
 import UpdateHCAccount from './interfaces/Admin/SuperUser/UpdateHCAccount';
 import { JobOpeningForm } from './interfaces/Admin/HiringCompany/JobOpeningForm';
 import { JobOpenings } from './interfaces/Admin/HiringCompany/JobOpenings';
+import { ViewCandidates } from './interfaces/Admin/HiringCompany/ViewCandidates';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         <Route path='/updatehcaccount' element={<UpdateHCAccount/>}/>
         <Route path='/jobopeningform' element={<JobOpeningForm/>}/>
         <Route path='/jobopening' element={<JobOpenings />}/>
-       
+        <Route path='/viewcandidates' element={<ViewCandidates/>}/> 
       </Routes>
     </Router>
   );
