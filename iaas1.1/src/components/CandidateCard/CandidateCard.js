@@ -13,19 +13,30 @@ const CandidateCard = ({ name, college, imageUrl }) => {
 };
 
 const App = () => {
-  const candidate = {
-    name: 'Nishitesh Padhi',
-    college: 'XIM University',
-    imageUrl: 'https://example.com/path/to/image.jpg',
-  };
+  const candidates = [
+    {
+      name: 'Nishitesh Padhi',
+      college: 'XIM University',
+      imageUrl: 'https://example.com/path/to/image1.jpg',
+    },
+    {
+      name: 'John Doe',
+      college: 'ABC University',
+      imageUrl: 'https://example.com/path/to/image2.jpg',
+    },
+    // Add more candidate objects as needed
+  ];
 
   return (
-    <div>
-      <CandidateCard
-        name={candidate.name}
-        college={candidate.college}
-        imageUrl={candidate.imageUrl}
-      />
+    <div className={styles.container}>
+      {candidates.map((candidate, index) => (
+        <CandidateCard
+          key={index}
+          name={candidate.name}
+          college={candidate.college}
+          imageUrl={candidate.imageUrl}
+        />
+      ))}
     </div>
   );
 };
