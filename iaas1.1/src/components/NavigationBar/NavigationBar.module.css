@@ -16,8 +16,8 @@
 }
 
 .jobskulLogo {
-  width: 50px; /* Set the width of the logo */
-height: 50px; /* Set the height of the logo */
+  width: 1rem ; /* Set the width of the logo */
+height: 1rem; /* Set the height of the logo */
 /* background-image: url(''); Optionally, set a background image for the logo */
 background-size: contain; /* Adjust the background image size */
 }

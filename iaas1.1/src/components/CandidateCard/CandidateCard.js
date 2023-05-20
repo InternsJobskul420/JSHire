@@ -12,4 +12,22 @@ const CandidateCard = ({ name, college, imageUrl }) => {
   );
 };
 
-export default CandidateCard;
+const App = () => {
+  const candidate = {
+    name: 'Nishitesh Padhi',
+    college: 'XIM University',
+    imageUrl: 'https://example.com/path/to/image.jpg',
+  };
+
+  return (
+    <div>
+      <CandidateCard
+        name={candidate.name}
+        college={candidate.college}
+        imageUrl={candidate.imageUrl}
+      />
+    </div>
+  );
+};
+
+export default App;
