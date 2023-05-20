@@ -25,21 +25,21 @@ const WelcomePage = () => {
   };
   return (
     <div className={styles.candidate_message_container}>
+      <div className={styles.bg}>
       <div className={styles.contain}>
         <CandidateShowMessage header={heading} description={description} />
 
-        <p className="candidate_agreement">
+        <p className={styles.candidate_agreement}>
           <input
             type="checkbox"
             checked={selected}
             onChange={handleRadioClick}
-            style={{ width: "10px" }}
             placeholder="check"
           />
           {terms}
         </p>
         <button
-          className={` ${selected ? styles.candiButton : ""}`}
+          className={`${styles.nextBtn} ${selected ? styles.candiButton : ""}`}
           type="submit"
           onClick={handleNextButtonClick}
           disabled={!selected}
@@ -47,6 +47,8 @@ const WelcomePage = () => {
           Next
         </button>
       </div>
+      </div>
+      
     </div>
   );
 };
