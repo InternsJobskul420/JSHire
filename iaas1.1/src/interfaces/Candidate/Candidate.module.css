@@ -1,8 +1,13 @@
-.agreement{
+.candidate_agreement{
     display: flex;
+    width: 50%;
+    /* border: 2px solid pink; */
+    font-weight: 500;
+    text-align: center;
+
 }
 
-.agreement input{
+.candidate_agreement input{
     width: 2.5vw;
     max-width: 5rem;
     min-width: 1rem ;
@@ -24,24 +29,75 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
+   
+    background-image: url('../../assets/bgImage.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
     height: 100vh;
 }
 
+.bg{
+   
+    /* border: 2px solid black; */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    backdrop-filter: blur(10px);
+}
+
 .contain{
-border: 5px solid brown;
+/* border: 5px solid brown; */
+/* border-radius: 10px; */
+
+box-shadow: 2px 1px 5px #10294E ;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 max-height: 1000px;
 height: 40vh;
+z-index: 12;
+
+background-color: #ffffff;
+
+}
+
+.timer{
+    border:2px solid #056FC6;
+    border-radius: 500px;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 3rem;
+    text-align: center;
+  
 }
 
 .nextBtn{
-    height: 200px;
+   
+    border-radius: 500px;
+    /* border: none; */
+    width: 20vw;
+    font-family: "Raleway";
+    height: calc(22vw * (103/526));
+    max-width: 250px;
+    max-height: calc(255px * (103/526)); 
+    /* padding: 0.5rem; */
+    
 }
 
 .candiButton{
-    /* height: 300px; */
+    color: #ffffff;
+    background-color: #056FC6;
+    font-size: 1rem;
+    font-family: Raleway;
+    border: none;
+    /* padding: 1rem; */
 }
+
