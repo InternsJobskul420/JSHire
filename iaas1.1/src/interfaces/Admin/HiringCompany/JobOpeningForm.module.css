@@ -1,88 +1,108 @@
+/* JobOpeningForm.module.css */
+
 body {
-    background-color: #FAFCFF;
-  }
+  background-color: #FAFCFF;
+}
 
 .formHeading {
-    color: #A7A8A7;
-    font-size: 3rem;
-    font-family: 'Raleway', sans-serif;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-    text-align: center;
-  }
+  color: #A7A8A7;
+  font-size: 3rem;
+  font-family: 'Raleway', sans-serif;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  text-align: center;
+}
 
-/* form.css */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+}
 
-/* Form container */
-.form-container {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  /* Column styles */
-  .form-column {
-    flex: 1;
-    margin-right: 2rem;
-  }
-  
-  /* Label styles */
-  .form-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #484848;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 900;
-    font-size: 2rem;
-  }
-  
-  /* Input field styles */
-  .form-input {
-    padding: 10px;
-    border-radius: 2.5rem;
-    border: none;
-    font-family: 'Raleway', sans-serif;
-    width: 50vh;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    outline: none;
-  }
-  
-  .form-input:hover {
-    transform: translateY(-5px);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
-  
-  .form-input:active {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
-  
-  .form-input.doubleHeight {
-    height: 10rem;
-  }
-  
-  /* Button styles */
-  .form-button {
-    background-color: #D52E2D;
-    width: 50%;
-    height: 2.5rem;
-    border-radius: 2rem;
-    border: none;
-    color: white;
-    font-family: 'Raleway', sans-serif;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition-duration: 0.3s;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  }
-  
-  .form-button:hover {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
-  
-  .form-button:active {
-    background-color: #aa2424;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    transform: translateY(3px);
-  }
-  
+.form {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+}
+
+.column {
+  flex: 1;
+  margin-right: 5rem;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #484848;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 2.5rem;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  outline: none;
+  resize: none;
+}
+
+textarea {
+  border-radius: 1rem;
+}
+
+input:hover,
+textarea:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 2.5rem;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  outline: none;
+  background-color: white; /* Set background color to white */
+}
+
+.select:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+button {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: #056FC6; /* If the button colour is blue  */
+  background-color: #D52E2D; /* If the button colour is red  */
+  color: white;
+  font-family: 'Raleway';
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+button:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+button:active {
+  background-color: #04589E; /* If the button colour is blue  */
+  background-color: #aa2424; /* If the button colour is red  */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transform: translateY(3px);
+}
+
+.select option::placeholder { /* Set placeholder style for select */
+  color: #A7A8A7;
+  font-style: italic;
+}
