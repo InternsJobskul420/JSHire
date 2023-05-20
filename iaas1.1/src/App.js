@@ -10,7 +10,7 @@ import WelcomePage from './interfaces/Candidate/WelcomePage';
 import EndInterview from './interfaces/Candidate/EndInterview';
 import UpdateHCAccount from './interfaces/Admin/SuperUser/UpdateHCAccount';
 import { JobOpeningForm } from './interfaces/Admin/HiringCompany/JobOpeningForm';
-
+import { JobOpenings } from './interfaces/Admin/HiringCompany/JobOpenings';
 
 function App() {
   return (
@@ -22,9 +22,9 @@ function App() {
         <Route path='/hringcompany' element={<HiringCompany/>}/>
         <Route path='/candidateWelcome' element={<WelcomePage/>}/>
         <Route path='/EndInterview' element={<EndInterview/>}/>
-
         <Route path='/updatehcaccount' element={<UpdateHCAccount/>}/>
         <Route path='/jobopeningform' element={<JobOpeningForm/>}/>
+        <Route path='/jobopening' element={<JobOpenings />}/>
        
       </Routes>
     </Router>
