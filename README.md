@@ -1,17 +1,24 @@
 # Styling convention for JSHire
 
 #Input filed
-.inputField{
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+input {
+  padding: 10px;
+  border-radius: 2.5rem;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+  width: 50vh;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  outline: none;
 }
 
-.inputField:Hover{
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+.input:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.inputField:Active{
-
-}
+.input:active {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+} 
 
 .btn{
   height: 2.5rem;
