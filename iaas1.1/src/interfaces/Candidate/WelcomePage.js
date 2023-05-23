@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CandidateShowMessage from "../../components/CandidateShowMessage/CandidateShowMessage";
 import styles from "./Candidate.module.css";
+import CandidateLayout from "../../components/CandidateLayout/CandidateLayout";
 
 const WelcomePage = () => {
   const heading = "You've got this!";
@@ -24,9 +25,7 @@ const WelcomePage = () => {
     }
   };
   return (
-    <div className={styles.candidate_message_container}>
-      <div className={styles.bg}>
-      <div className={styles.contain}>
+   <CandidateLayout>
         <CandidateShowMessage header={heading} description={description} />
 
         <p className={styles.candidate_agreement}>
@@ -46,10 +45,8 @@ const WelcomePage = () => {
         >
           Next
         </button>
-      </div>
-      </div>
       
-    </div>
+    </CandidateLayout>
   );
 };
 

@@ -1,0 +1,47 @@
+.candidate_message_container{
+    font-family: Raleway;
+    /* color: #056FC6; */
+    font-weight: 700;   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid blue; */
+   
+    background-image: url('../../assets/bgImage.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+
+.bg{
+   
+    /* border: 2px solid black; */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    backdrop-filter: blur(10px);
+}
+
+.contain{
+/* border: 5px solid brown; */
+/* border-radius: 10px; */
+
+box-shadow: 2px 1px 5px #10294E ;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+max-height: 1000px;
+height: 60vh;
+z-index: 12;
+
+background-color: #ffffff;
+
+}

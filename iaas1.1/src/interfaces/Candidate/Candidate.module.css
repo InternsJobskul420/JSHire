@@ -83,6 +83,8 @@ background-color: #ffffff;
    
     border-radius: 500px;
     /* border: none; */
+    background-color: #dfdbdb;
+    color: black;
     width: 20vw;
     font-family: "Raleway";
     height: calc(22vw * (103/526));
@@ -98,6 +100,147 @@ background-color: #ffffff;
     font-size: 1rem;
     font-family: Raleway;
     border: none;
-    /* padding: 1rem; */
+    padding: 0rem 1rem;
+    text-align: center;
+}
+
+.question_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.container{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('../../assets/bgImage.svg');
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* border: 2px solid blue; */
+
+}
+
+.candidate_layout{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center; */
+    background-color: #FFFFFF;
+    border-radius: 50px;
+    /* border: 2px solid red; */
+}
+
+.question_number{
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 500;
+    border: none;
+    padding: 0;
+    font-family: 'Raleway';
+    margin:0.3rem 0.5rem;
+    background-color: #a8bac6;
+}
+
+.question_number:hover{
+    /* background-color: red; */
+    color: white;
+}
+
+.candidate_side{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 2px solid brown; */
+    align-items: center;
+    height: 100%;
+    margin-left: 5rem;
+    padding-right: 20px;
+}
+
+.candidate_side div{
+    margin:10px;
+    font-family: 'Raleway';
+}
+
+.question_btn{
+    /* color: red; */
+    padding: 5rem;
+    font-family: 'Raleway';
+}
+.questionHead{
+    font-size: 1.5rem;
+    padding-top: 1rem;
+     /* border: 2px solid blue; */
+}
+.recordButton {
+    font-family: 'Raleway';
+    background-color: #056FC6;
+    color: #FFFFFF;
+    border: none;
+}
+
+
+
+.videoLayout{
+    width: 550px;
+    height: 300px;
+    /* border: 2px solid blue; */
+}
+
+.videoLayout .img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;   
+}
+
+.questions{
+   width: 550px;
+
+}
+
+.candidateButton{
+    border-radius: 500px;
+    /* border: none; */
+    background-color: #056FC6;
+    color: #ffffff;
+    width: 20vw;
+    font-family: "Raleway";
+    height: calc(22vw * (103/526));
+    max-width: 250px;
+    max-height: calc(255px * (103/526)); 
+}
+
+.equipBody{
+    padding: 0.2rem;
+    font-family: 'Raleway';
+    font-weight:500;
+    width: 70vw;
+    text-align: center;
+    
+
+}
+
+
+
+.candidate_video{
+    width: 70vw;
+    height: 50vh;
+}
+
+.videoContainer{
+    background-color: #FFFFFF;
+    height: 80vh;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 

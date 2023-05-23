@@ -12,6 +12,8 @@ import UpdateHCAccount from './interfaces/Admin/SuperUser/UpdateHCAccount';
 import { JobOpeningForm } from './interfaces/Admin/HiringCompany/JobOpeningForm';
 import { JobOpenings } from './interfaces/Admin/HiringCompany/JobOpenings';
 import { ViewCandidates } from './interfaces/Admin/HiringCompany/ViewCandidates';
+import CandidateInterview from './interfaces/Candidate/CandidateInterview';
+import EquipmentTesting from './interfaces/Candidate/EquipmentTesting';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path='/jobopeningform' element={<JobOpeningForm/>}/>
         <Route path='/jobopening' element={<JobOpenings />}/>
         <Route path='/viewcandidates' element={<ViewCandidates/>}/> 
+        <Route path='/candidateview' element={<CandidateInterview/>}/> 
+        <Route path='/equipmentTesting' element={<EquipmentTesting/>}/> 
       </Routes>
     </Router>
   );

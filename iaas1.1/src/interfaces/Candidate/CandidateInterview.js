@@ -1,8 +1,8 @@
 import React from 'react'
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-import styles from  './CandidateQuestion.module.css';
-import image from '../../Assest/video.svg'
+import styles from  './Candidate.module.css';
+import sampleimage from '../../assets/video.svg'
 
 
 
@@ -25,7 +25,7 @@ const CandidateInterview = () => {
     }
   
     const loadData = async () => {
-      let response = await fetch("/api/displayQuestions", {
+      let response = await fetch("http://localhost:80/api/displayQuestions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,8 +69,8 @@ const CandidateInterview = () => {
   
     let getQuestion = (questionIndex) => {
       // console.log(allQuestionsSet[0])
-  
-      console.log(questionIndex);
+      if (allQuestionsSet && allQuestionsSet[0]) {
+        console.log(questionIndex);
       Object.keys(allQuestionsSet[0]).map((Index) => {
         if (questionIndex == Index) {
           setSelectedQuestion(allQuestionsSet[0][Index]);
@@ -80,17 +80,12 @@ const CandidateInterview = () => {
           setRecordingStatus(true);
         }
       });
+      }
+      
     };
   
     const nextQuestion = () => {
-      setTimer(null);
-      setRecordingStatus(false);
-      const nextQuestionNumber = questionNumber + 1;
-      if (nextQuestionNumber <= noOfQuestions) {
-        getQuestion(nextQuestionNumber);
-      } else {
-        alert("Quiz complete!");
-      }
+      
     };
   
     //----------showing each button-----------------//
@@ -139,7 +134,7 @@ const CandidateInterview = () => {
           <div className={styles.candidate_side}>
             <div className={`${styles.questionHead} ${styles.candiCom}`}>Question {questionNumber}</div>
             <div className={styles.questions}>{selectedQuestion}</div>
-            <div className={`${styles.videoLayout}  ${styles.candiCom}`}><img src={image} className={styles.img} alt="video image"/></div>
+            <div className={`${styles.videoLayout}  ${styles.candiCom}`}><img src={sampleimage} className={styles.img} alt="video image"/></div>
           </div>
         </div>
       </div>

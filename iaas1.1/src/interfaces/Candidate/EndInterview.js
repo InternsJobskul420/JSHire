@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import CandidateShowMessage from '../../components/CandidateShowMessage/CandidateShowMessage';
 import styles from './Candidate.module.css'
+import CandidateLayout from '../../components/CandidateLayout/CandidateLayout';
 
 const EndInterview = () => {
   const heading = "Congratulations!";
@@ -35,9 +36,7 @@ const EndInterview = () => {
   }, []);
    
   return(
-    <div className={styles.candidate_message_container}>
-      <div className={styles.bg}>
-      <div className={styles.contain}>
+    <CandidateLayout>
         <CandidateShowMessage header={heading} description={description} />
         <div className={`${seconds !== 0 ? styles.timer : ""}`}>{seconds !== 0 ? seconds: ""}</div>
         
@@ -45,10 +44,7 @@ const EndInterview = () => {
         
        
         
-      </div>
-      </div>
-      
-    </div>
+        </CandidateLayout>
   );
 }
 
