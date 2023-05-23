@@ -11,7 +11,7 @@ const EquipmentTesting = () => {
 
   useEffect(() => { 
    
-    const constrains = {audio: false, video: true}
+    const constrains = {audio: true, video: true}
     const getAccess = async ()=>{
       const getMedia = await navigator.mediaDevices.getUserMedia(constrains);
       console.log("done");
