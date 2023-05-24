@@ -7,7 +7,7 @@ import styles from './ScheduleInterview.module.css';
 export const ScheduleInterview = () => {
   return (
     <>
-    <NavigationBar/>
+      <NavigationBar />
       <div className={styles.row}>
         <DisplayPdf />
         <InterviewSchedule />

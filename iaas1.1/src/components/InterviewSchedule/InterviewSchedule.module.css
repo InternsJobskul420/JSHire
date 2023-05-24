@@ -95,6 +95,7 @@
   border: none;
   background-color: #056FC6; /* If the button colour is blue  */
   color: white;
+  width: 45%;
   font-family: 'Raleway';
   cursor: pointer;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -119,6 +120,7 @@
   background-color: #D52E2D; /* If the button colour is red  */
   color: white;
   font-family: 'Raleway';
+  width: 45%;
   cursor: pointer;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   transition: box-shadow 0.3s ease-in-out;
