@@ -1,0 +1,131 @@
+.InterviewScheduleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 45%;
+}
+
+.InterviewScheduleForm {
+  display: flex;
+  height: 95%;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  border-radius: 50px;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.InterviewScheduleHeading {
+  font-family: 'Raleway';
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.InterviewScheduleGroup {
+  margin-bottom: 2rem;
+}
+
+.InterviewScheduleLabel {
+  display: block;
+  font-family: 'Raleway';
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.InterviewScheduleInput {
+  width: 100% !important;
+  border-radius: 20px;
+  border: none;
+  background-color: #ffffff;
+  font-size: 1rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.InterviewScheduleInput:focus {
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.InterviewScheduleDateInput,
+.InterviewScheduleTimeInput {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 50px;
+  border: none;
+  background-color: #ffffff;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.InterviewScheduleDateInput:focus,
+.InterviewScheduleTimeInput:focus {
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.InterviewScheduleSubheading {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #056FC6;
+}
+
+.InterviewScheduleButtonGroup {
+  display: flex;
+  justify-content: space-between;
+}
+
+.InterviewScheduleCancelButton {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border: none;
+  background-color: #056FC6;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  transition: all 0.1s ease;
+}
+
+.InterviewScheduleCancelButton:hover {
+  background-color: #509AD7;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.InterviewScheduleCancelButton:active {
+  transform: translateY(2px);
+}
+
+.InterviewScheduleSubmitButton {
+  border-radius: 50px;
+  border: none;
+  background-color: #D52E2D;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+  transition: all 0.1s ease;
+}
+
+.InterviewScheduleSubmitButton:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  background-color: #D94242;
+}
+
+.InterviewScheduleSubmitButton:active {
+  transform: translateY(2px);
+}
