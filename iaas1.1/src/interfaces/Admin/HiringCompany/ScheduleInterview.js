@@ -1,13 +1,17 @@
-import React from 'react'
-import { InterviewSchedule } from '../../../components/InterviewSchedule/InterviewSchedule'
-
+import React from 'react';
+import NavigationBar from '../../../components/NavigationBar/NavigationBar';
+import { InterviewSchedule } from '../../../components/InterviewSchedule/InterviewSchedule';
+import { DisplayPdf } from '../../../components/DisplayPdf/DisplayPdf';
+import styles from './ScheduleInterview.module.css';
 
 export const ScheduleInterview = () => {
   return (
     <>
-    <div className='row'>
-    <InterviewSchedule/>
-    </div>
+    <NavigationBar/>
+      <div className={styles.row}>
+        <DisplayPdf />
+        <InterviewSchedule />
+      </div>
     </>
-  )
-}
+  );
+};

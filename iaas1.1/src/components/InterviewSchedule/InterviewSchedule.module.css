@@ -3,7 +3,9 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  width: 45%;
+  padding: 20px;
+  margin: 20px auto; /* Center align the container */
+  width: 40%; /* Take up the entire width of the screen */
 }
 
 .InterviewScheduleForm {
@@ -17,6 +19,8 @@
   background-color: white;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
+
+/* Rest of the CSS code remains the same */
 
 .InterviewScheduleHeading {
   font-family: 'Raleway';
@@ -39,7 +43,7 @@
 }
 
 .InterviewScheduleInput {
-  width: 100% !important;
+  width: 80% !important;
   border-radius: 20px;
   border: none;
   background-color: #ffffff;
@@ -55,7 +59,7 @@
 
 .InterviewScheduleDateInput,
 .InterviewScheduleTimeInput {
-  width: 100%;
+  width: 80%;
   padding: 1rem;
   border-radius: 50px;
   border: none;
@@ -86,46 +90,68 @@
 }
 
 .InterviewScheduleCancelButton {
-  padding: 1rem 2rem;
-  border-radius: 50px;
+  height: 2.5rem;
+  border-radius: 2rem;
   border: none;
-  background-color: #056FC6;
+  background-color: #056FC6; /* If the button colour is blue  */
   color: white;
-  font-size: 1rem;
-  font-weight: bold;
+  font-family: 'Raleway';
   cursor: pointer;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   transition: box-shadow 0.3s ease-in-out;
-  transition: all 0.1s ease;
 }
 
 .InterviewScheduleCancelButton:hover {
-  background-color: #509AD7;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .InterviewScheduleCancelButton:active {
-  transform: translateY(2px);
+  background-color: #04589E;  /* If the button colour is blue  */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transform: translateY(3px);
 }
 
 .InterviewScheduleSubmitButton {
-  border-radius: 50px;
+  height: 2.5rem;
+  border-radius: 2rem;
   border: none;
-  background-color: #D52E2D;
+  background-color: #D52E2D; /* If the button colour is red  */
   color: white;
-  font-size: 1rem;
-  font-weight: bold;
+  font-family: 'Raleway';
   cursor: pointer;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   transition: box-shadow 0.3s ease-in-out;
-  transition: all 0.1s ease;
 }
 
 .InterviewScheduleSubmitButton:hover {
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-  background-color: #D94242;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .InterviewScheduleSubmitButton:active {
-  transform: translateY(2px);
+  background-color: #aa2424;  /* If the button colour is red  */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transform: translateY(3px);
+}
+
+@media (max-width: 768px) {
+  .InterviewScheduleContainer {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .InterviewScheduleForm {
+    max-width: none;
+  }
+
+  .InterviewScheduleHeading {
+    font-size: 1.5rem;
+  }
+
+  .InterviewScheduleInput,
+  .InterviewScheduleDateInput,
+  .InterviewScheduleTimeInput {
+    font-size: 0.9rem;
+  }
 }

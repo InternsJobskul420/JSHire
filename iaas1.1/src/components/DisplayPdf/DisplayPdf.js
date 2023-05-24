@@ -6,14 +6,14 @@ export const DisplayPdf = () => {
     <div className={styles.card}>
       <h2 className={styles.cardHeading}>Candidate Name's CV</h2>
       <div className={styles.pdfContainer}>
-       { <Document file="https://nishitesh42.github.io/Docs/Nishitesh_CV.pdf">
-
-       </Document> }
-        <iframe 
-        src={"https://nishitesh42.github.io/Docs/Nishitesh_CV.pdf#toolbar=0"}
-        width="100%"
-        height="100%" />
+        <iframe
+          src="https://nishitesh42.github.io/Docs/Nishitesh_CV.pdf#toolbar=0"
+          width="100%"
+          height="100%"
+          title="CV"
+          frameBorder="0"
+        />
       </div>
     </div>
   );
-}
+};
