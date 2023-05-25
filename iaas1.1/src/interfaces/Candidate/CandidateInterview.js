@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState, useEffect } from "react";
 
 import styles from  './Candidate.module.css';
@@ -7,6 +7,8 @@ import sampleimage from '../../assets/video.svg'
 
 
 const CandidateInterview = () => {
+
+    const candidatevideo = useRef();
     const noOfQuestions = 20;
     const columnContainer = [];
     let TimeLimit = 30;
@@ -16,9 +18,8 @@ const CandidateInterview = () => {
     const [questionNumber, setQuestionNumber] = useState(1);
     const [questions, setQuestions] = useState(null);
     const [allQuestionsSet, setAllQuestionsSet] = useState(null);
-    const [timer, setTimer] = useState(null);
-    const [timeLeft, setTimeLeft] = useState(30);
-    const [recordingStatus, setRecordingStatus] = useState(false);
+    const [mediaRecorder, setMediaRecorder] = useState(null);
+    const [recordedChunks, setRecordedChunks] = useState([]);
   
     for (let i = 1; i <= noOfQuestions; i++) {
       columnContainer.push(i);
@@ -75,9 +76,9 @@ const CandidateInterview = () => {
         if (questionIndex == Index) {
           setSelectedQuestion(allQuestionsSet[0][Index]);
           setQuestionNumber(Index);
-          setTimeLeft(TimeLimit);
-          setTimer(TimeLimit);
-          setRecordingStatus(true);
+          // setTimeLeft(TimeLimit);
+          // setTimer(TimeLimit);
+          // setRecordingStatus(true);
         }
       });
       }
@@ -103,8 +104,19 @@ const CandidateInterview = () => {
       });
     };
   
+    const getVideo = async()=>{
+
+      const stream =  await navigator.mediaDevices.getUserMedia({audio: false, video: true});
+      candidatevideo.current.srcObject = stream;
+      const recorder = new MediaRecorder(stream);
+      setMediaRecorder(recorder);
+      
+    }
+
+
     useEffect(() => {
       loadData();
+      getVideo();
     }, []);
   
     useEffect(() => {
@@ -113,16 +125,16 @@ const CandidateInterview = () => {
       console.log(questions);
     }, [questions]);
   
-    useEffect(() => {
-      if (timer && timeLeft >= 0) {
-        const intervalId = setInterval(() => {
-          setTimeLeft((timeLeft) => timeLeft - 1);
-        }, 1000);
-        return () => clearInterval(intervalId);
-      } else if (timer && timeLeft < 0) {
-        nextQuestion();
-      }
-    }, [timer, timeLeft]);
+    // useEffect(() => {
+    //   if (timer && timeLeft >= 0) {
+    //     const intervalId = setInterval(() => {
+    //       setTimeLeft((timeLeft) => timeLeft - 1);
+    //     }, 1000);
+    //     return () => clearInterval(intervalId);
+    //   } else if (timer && timeLeft < 0) {
+    //     nextQuestion();
+    //   }
+    // }, [timer, timeLeft]);
   
     return (
       <div className={styles.container}>
@@ -134,7 +146,9 @@ const CandidateInterview = () => {
           <div className={styles.candidate_side}>
             <div className={`${styles.questionHead} ${styles.candiCom}`}>Question {questionNumber}</div>
             <div className={styles.questions}>{selectedQuestion}</div>
-            <div className={`${styles.videoLayout}  ${styles.candiCom}`}><img src={sampleimage} className={styles.img} alt="video image"/></div>
+            <div className={`${styles.equipBody} `}>
+          <video ref={candidatevideo} className={styles.candidate_video} autoPlay playsInline  ></video>
+        </div>
           </div>
         </div>
       </div>

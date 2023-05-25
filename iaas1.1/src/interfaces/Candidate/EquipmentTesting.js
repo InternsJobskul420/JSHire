@@ -2,12 +2,17 @@ import React, { useEffect,useState, useRef } from "react";
 import sampleimage from "../../assets/video.svg";
 import styles from "./Candidate.module.css";
 import CandidateLayout from "../../components/CandidateLayout/CandidateLayout";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const EquipmentTesting = () => {
   const videoRef = useRef();
   const [hasAccess, setHasAccess] = useState(false);
+  const navigate = useNavigate();
 
  
+  const startInterview = ()=>{
+    navigate('../candidateinterview')
+  }
 
   useEffect(() => { 
    
@@ -39,7 +44,7 @@ const EquipmentTesting = () => {
           Make sure your camera is switched on and net connection is good
         </div>
         <div className={styles.equipBody}>
-          <button className={styles.candidateButton}>Start Interview</button>
+          <button className={styles.candidateButton} onClick={startInterview}>Start Interview</button>
         </div>
         
         </div>

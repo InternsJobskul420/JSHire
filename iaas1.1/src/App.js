@@ -14,7 +14,6 @@ import { JobOpenings } from './interfaces/Admin/HiringCompany/JobOpenings';
 import { ViewCandidates } from './interfaces/Admin/HiringCompany/ViewCandidates';
 import CandidateInterview from './interfaces/Candidate/CandidateInterview';
 import EquipmentTesting from './interfaces/Candidate/EquipmentTesting';
-import { ScheduleInterview } from './interfaces/Admin/HiringCompany/ScheduleInterview';
 
 function App() {
   return (
@@ -32,7 +31,6 @@ function App() {
         <Route path='/viewcandidates' element={<ViewCandidates/>}/> 
         <Route path='/candidateview' element={<CandidateInterview/>}/> 
         <Route path='/equipmentTesting' element={<EquipmentTesting/>}/> 
-        <Route path='/scheduleinterview' element={<ScheduleInterview/>}/>
       </Routes>
     </Router>
   );
