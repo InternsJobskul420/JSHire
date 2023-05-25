@@ -29,8 +29,8 @@ function App() {
         <Route path='/jobopeningform' element={<JobOpeningForm/>}/>
         <Route path='/jobopening' element={<JobOpenings />}/>
         <Route path='/viewcandidates' element={<ViewCandidates/>}/> 
-        <Route path='/candidateview' element={<CandidateInterview/>}/> 
-        <Route path='/equipmentTesting' element={<EquipmentTesting/>}/> 
+        <Route path='/candidateinterviewview' element={<CandidateInterview/>}/> 
+        <Route path='/equipmenttesting' element={<EquipmentTesting/>}/> 
       </Routes>
     </Router>
   );
