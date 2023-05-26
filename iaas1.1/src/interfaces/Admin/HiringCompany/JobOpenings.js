@@ -10,7 +10,7 @@ export const JobOpenings = () => {
     <>
     <NavigationBar/>
     <OpeningCard/>
-    <AddButton/>
+    <AddButton side="HC"/>
     </>
   )
 }
