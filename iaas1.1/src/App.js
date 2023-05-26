@@ -14,6 +14,8 @@ import { JobOpenings } from './interfaces/Admin/HiringCompany/JobOpenings';
 import { ViewCandidates } from './interfaces/Admin/HiringCompany/ViewCandidates';
 import CandidateInterview from './interfaces/Candidate/CandidateInterview';
 import EquipmentTesting from './interfaces/Candidate/EquipmentTesting';
+import LoginSU from './interfaces/Admin/SuperUser/LoginSU';
+import LoginHC from './interfaces/Admin/HiringCompany/LoginHC';
 
 function App() {
   return (
@@ -21,16 +23,20 @@ function App() {
       <Routes>
         
         <Route path='/' element={<Login/>}/> /* Set a page as home */
-        <Route path='/hringcompanyform' element={<HiringCompnayForm/>}/>
-        <Route path='/hringcompany' element={<HiringCompany/>}/>
-        <Route path='/candidateWelcome' element={<WelcomePage/>}/>
-        <Route path='/EndInterview' element={<EndInterview/>}/>
+        <Route path='/hiringcompanyform' element={<HiringCompnayForm/>}/>
+        <Route path='/hiringcompany' element={<HiringCompany/>}/>
+        <Route path='/candidatewelcome' element={<WelcomePage/>}/>
+        <Route path='/endInterview' element={<EndInterview/>}/>
         <Route path='/updatehcaccount' element={<UpdateHCAccount/>}/>
         <Route path='/jobopeningform' element={<JobOpeningForm/>}/>
         <Route path='/jobopening' element={<JobOpenings />}/>
         <Route path='/viewcandidates' element={<ViewCandidates/>}/> 
-        <Route path='/candidateinterviewview' element={<CandidateInterview/>}/> 
+        <Route path='/candidateinterview' element={<CandidateInterview/>}/> 
         <Route path='/equipmenttesting' element={<EquipmentTesting/>}/> 
+        <Route path='/loginSU' element={<LoginSU/>}/> 
+        <Route path='/loginHC' element={<LoginHC/>}/> 
+        
+        
       </Routes>
     </Router>
   );

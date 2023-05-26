@@ -11,13 +11,14 @@ const CandidateInterview = () => {
     const candidatevideo = useRef();
     const noOfQuestions = 20;
     const columnContainer = [];
-    let TimeLimit = 30;
+    let TimeLimit = 5;
     const categoryname = "Software Developer";
   
     const [selectedQuestion, setSelectedQuestion] = useState(null);
     const [questionNumber, setQuestionNumber] = useState(1);
     const [questions, setQuestions] = useState(null);
     const [allQuestionsSet, setAllQuestionsSet] = useState(null);
+    const [recordingStatus, setRecordingStatus] = useState(false);
     const [mediaRecorder, setMediaRecorder] = useState(null);
     const [recordedChunks, setRecordedChunks] = useState([]);
   
@@ -76,6 +77,7 @@ const CandidateInterview = () => {
         if (questionIndex == Index) {
           setSelectedQuestion(allQuestionsSet[0][Index]);
           setQuestionNumber(Index);
+          startRecording();
           // setTimeLeft(TimeLimit);
           // setTimer(TimeLimit);
           // setRecordingStatus(true);
@@ -104,19 +106,41 @@ const CandidateInterview = () => {
       });
     };
   
-    const getVideo = async()=>{
+    const startRecording = async()=>{
 
       const stream =  await navigator.mediaDevices.getUserMedia({audio: false, video: true});
       candidatevideo.current.srcObject = stream;
       const recorder = new MediaRecorder(stream);
+      console.log(recorder);
       setMediaRecorder(recorder);
+      const chunks = [];
+        recorder.ondataavailable = (e) => chunks.push(e.data);
+        recorder.start();
+        setRecordedChunks(chunks);
+
+        setTimeout(() => {
+          stopRecording();
+          alert("times out");
+          console.log(recordedChunks);
+        }, TimeLimit * 1000);
+
+        setRecordingStatus(true);
       
     }
+
+    const stopRecording = () => {
+      if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+        mediaRecorder.stop();
+        setRecordingStatus(false);
+        const blob = new Blob(recordedChunks, { type: 'video/webm' });
+        // You can upload the recorded video blob to a server or perform further processing here
+      }
+    };
 
 
     useEffect(() => {
       loadData();
-      getVideo();
+      
     }, []);
   
     useEffect(() => {
