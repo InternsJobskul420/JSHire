@@ -1,0 +1,132 @@
+.loginContainer {
+  display: flex;
+  height: 100vh;
+}
+
+.leftColumn {
+  flex: 1;
+  background-color: #056FC6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcomeText {
+  color: #FFFFFF;
+  font-size: 5rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  text-align: center;
+}
+
+.rightColumn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #F5FAFD;
+}
+
+.formHeading {
+  color: #484848;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 1000;
+  font-size: 3rem;
+  margin-bottom: 10%;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #484848;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+input {
+  padding: 10px;
+  border-radius: 2.5rem;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+  width: 50vh;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  outline: none;
+  transition: 0.3s ease-in-out;
+}
+
+.input:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.input:active {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+} 
+
+.roundedButton {
+  margin-top: 5%;
+  padding: 10px;
+  border-radius: 2.5rem;
+  align-items: center;
+  background-color: #056FC6;
+  color: #FFFFFF;
+  font-family: 'Raleway', sans-serif;
+  border: none;
+  cursor: pointer;
+  width: 50vh;
+  transition-duration: 0.3s;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.roundedButton:hover{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.roundedButton:active {
+  background-color: #04589E;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transform: translateY(3px);
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .loginContainer {
+    flex-direction: column;
+  }
+
+  .leftColumn {
+    height: 200px;
+  }
+
+  .rightColumn {
+    padding: 10px;
+  }
+
+  .formHeading {
+    font-size: 20px;
+  }
+
+  .roundedButton {
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .leftColumn {
+    height: 150px;
+  }
+
+  .formHeading {
+    font-size: 18px;
+  }
+
+  .roundedButton {
+    padding: 6px 12px;
+  }
+}
