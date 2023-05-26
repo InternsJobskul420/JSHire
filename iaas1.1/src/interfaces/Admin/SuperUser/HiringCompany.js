@@ -11,10 +11,11 @@ export const HiringCompany = () => {
 
       <h1 className={styles.formHeading}>Create An Account</h1>
       <div className={styles['display-cards']}>
-        <HCCard />
-        <HCCard />
-        <HCCard />
-        <HCCard />
+        
+        <HCCard CompanyName="Accenture"/>
+        <HCCard CompanyName="TCS"/>
+        <HCCard CompanyName="Wipro"/>
+        <HCCard CompanyName="Cozentus"/>
         <HCCard />
         <HCCard />
         <HCCard />
