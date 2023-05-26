@@ -6,6 +6,10 @@ const HCSchema = new Schema({
         type: String,
         required: true
     },
+    compnayDesc: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true
