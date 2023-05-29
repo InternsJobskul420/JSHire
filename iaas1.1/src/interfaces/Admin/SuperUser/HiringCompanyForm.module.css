@@ -1,4 +1,4 @@
-body{
+/* body{
   background-color: #FAFCFF;
 }
 
@@ -80,6 +80,120 @@ body{
   
   .formButton:active{
     background-color: #04589E;  /* If the button colour is blue  */
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transform: translateY(3px);
-  }
+  } */ 
+
+  /* JobOpeningForm.module.css */
+
+body {
+  background-color: #FAFCFF;
+}
+
+.formHeading {
+  color: #A7A8A7;
+  font-size: 3rem;
+  font-family: 'Raleway', sans-serif;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+}
+
+.column {
+  flex: 1;
+  margin-right: 5rem;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #484848;
+  
+}
+
+label:after {
+  content:" *";
+  color: red;
+}
+
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 2.5rem;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  outline: none;
+  resize: none;
+}
+
+textarea {
+  border-radius: 1rem;
+}
+
+input:hover,
+textarea:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 2.5rem;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  outline: none;
+  background-color: white; /* Set background color to white */
+}
+
+.select:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+button {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: #056FC6; /* If the button colour is blue  */
+  color: white;
+  font-family: 'Raleway';
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+button:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+button:active {
+  background-color: #04589E; /* If the button colour is blue  */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transform: translateY(3px);
+}
+
+.select option::placeholder { /* Set placeholder style for select */
+  color: #A7A8A7;
+  font-style: italic;
+}
