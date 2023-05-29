@@ -20,16 +20,11 @@ export const JobOpeningForm = () => {
               </select>
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="company-name">Company Name </label>
-              <select id="company-name" name="company-name" className={styles.select} required>
-                <option value="" disabled hidden>Select</option>
-                <option value="company1">Company 1</option>
-                <option value="company2">Company 2</option>
-                <option value="company3">Company 3</option>
-              </select>
+              <label htmlFor="num-openings">Number of Openings </label>
+              <input type="number" id="num-openings" name="num-openings" min="0" required />
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="company-description">Company Description </label>
+              <label htmlFor="company-description">Job Description </label>
               <textarea
                 id="company-description"
                 name="company-description"
@@ -37,19 +32,11 @@ export const JobOpeningForm = () => {
                 minLength="100"
               ></textarea>
             </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="num-openings">Number of Openings </label>
-              <input type="number" id="num-openings" name="num-openings" min="0" required />
-            </div>
           </div>
           <div className={styles.column}>
             <div className={styles.formGroup}>
-              <label htmlFor="job-description">Job Description </label>
-              <textarea id="job-description" name="job-description" required minLength="100"></textarea>
-            </div>
-            <div className={styles.formGroup}>
               <label htmlFor="job-requirements">Job Requirements </label>
-              <textarea id="job-requirements" name="job-requirements" required minLength="100"></textarea>
+              <textarea id="job-requirements" name="job-requirements" required minLength="200"></textarea>
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="basic-qualifications">Basic Qualifications </label>
@@ -57,7 +44,7 @@ export const JobOpeningForm = () => {
                 id="basic-qualifications"
                 name="basic-qualifications"
                 required
-                minLength="5"
+                minLength="200"
               ></textarea>
             </div>
             <div className={styles.formGroup}>
