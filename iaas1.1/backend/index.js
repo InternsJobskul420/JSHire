@@ -2,9 +2,14 @@ const express = require('express');
 const server = express();
 const socket = require('socket.io');
 const port = process.env.PORT || 80;
+const cors = require('cors');
 
-const mongoDB= require("./db")
-mongoDB();
+const mongoconnect= require("./db")
+mongoconnect();
+
+server.use(express.json());
+
+server.use(cors());
 
 server.use((req,res,next)=>{
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -16,14 +21,18 @@ server.use((req,res,next)=>{
   })
 
 
-server.use(express.json())
+
 server.use('/api', require("./Routes/DisplayQuestions"));
+server.use('/api', require("./Routes/CreateHiringCompany"));
+server.use('/api', require("./Routes/DisplayHC"));
 
 
-server.listen(port, ()=>{
-    console.log('server started')
-})
+
 
 server.get('/', (req,res)=>{
     res.send("Hello world")
+})
+
+server.listen(port, ()=>{
+  console.log('server started')
 })
