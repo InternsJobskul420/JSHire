@@ -12,7 +12,7 @@ const NavigationBar = () => {
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
   };
-
+ 
   return (
     <nav className={styles.navbar}>
       <div className={styles.container}>
