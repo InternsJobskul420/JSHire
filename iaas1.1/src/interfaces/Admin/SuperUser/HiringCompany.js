@@ -38,9 +38,9 @@ export const HiringCompany = () => {
       <h1 className={styles.formHeading}>Create An Account</h1>
       <div className={styles['display-cards']}>
 
-        {hiringCompanies ? hiringCompanies.map((companies)=>{
+        {hiringCompanies ? hiringCompanies.map((companies,index)=>{
           return(
-            <HCCard CompanyName={companies.companyName}/>
+            <HCCard CompanyName={companies.companyName} key={index}/>
           )
         }):""}
         <AddButton side="SU"/>

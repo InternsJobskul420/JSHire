@@ -6,7 +6,7 @@ router.post('/createhiringcompany', async(req,res)=>{
    try {
 
       let data = req.body;
-      console.log(data);
+      // console.log(data);
 
       await HC.create({
          companyName:req.body.companyName,

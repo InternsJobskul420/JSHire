@@ -26,4 +26,4 @@ const CandSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('SuperUserDB', CandSchema);
+module.exports = mongoose.model('Candidates', CandSchema);
