@@ -11,23 +11,24 @@ async function connectDB(){
     });
   }
   
-  // const fetchQuestions = async () => {
-  //   try {
-  //     const fetchedQuestions = await mongoose.connection.db.collection('PrototypeQuestions').find({}).toArray();
-  //     const fetchedSUDetails = await mongoose.connection.db.collection('SuperUserDB').find({}).toArray();
-  //     const fetchedHiringCompany = await mongoose.connection.db.collection('hiringcompanies').find({}).toArray();
-  //     // console.log(fetchedQuestions);
+  const fetchQuestions = async () => {
+    try {
+      // console.log("connected to db");
+      // const fetchedQuestions = await mongoose.connection.db.collection('PrototypeQuestions').find({}).toArray();
+      // const fetchedSUDetails = await mongoose.connection.db.collection('SuperUserDB').find({}).toArray();
+      // const fetchedHiringCompany = await mongoose.connection.db.collection('hiringcompanies').find({}).toArray();
+      // console.log(fetchedQuestions);
   
-  //     global.questions = fetchedQuestions;
-  //     global.SuperUser = fetchedSUDetails;
-  //     global.HiringCompany = fetchedHiringCompany;
-  //     // console.log(global.questions);
-  //     // console.log(global.HiringCompany);
-  //     // console.log(global.SuperUser);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+      // global.questions = fetchedQuestions;
+      global.SuperUser = fetchedSUDetails;
+      // global.HiringCompany = fetchedHiringCompany;
+      // console.log(global.questions);
+      // console.log(global.HiringCompany);
+      // console.log(global.SuperUser);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   
   module.exports = connectDB;
   
