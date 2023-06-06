@@ -2,27 +2,27 @@ import React, { useState } from 'react';
 import styles from './OpeningCard.module.css';
 import { FaTrash, FaEye } from 'react-icons/fa';
 
-export const OpeningCard = () => {
-  const [jobData, setJobData] = useState([
-    {
-      jobRole: 'Software Engineer',
-      jobId: '1234',
-      jobOpenings: 5,
-      cvUploadLink: 'https://example.com/upload-cv',
-    },
-    {
-      jobRole: 'Consultant',
-      jobId: '5678',
-      jobOpenings: 3,
-      cvUploadLink: 'https://example.com/upload-cv',
-    },
-    {
-      jobRole: 'Designer',
-      jobId: '9876',
-      jobOpenings: 2,
-      cvUploadLink: 'https://example.com/upload-cv',
-    },
-  ]);
+export const OpeningCard = (props) => {
+  // const [jobData, setJobData] = useState([
+  //   {
+  //     jobRole: 'Software Engineer',
+  //     jobId: '1234',
+  //     jobOpenings: 5,
+  //     cvUploadLink: 'https://example.com/upload-cv',
+  //   },
+  //   {
+  //     jobRole: 'Consultant',
+  //     jobId: '5678',
+  //     jobOpenings: 3,
+  //     cvUploadLink: 'https://example.com/upload-cv',
+  //   },
+  //   {
+  //     jobRole: 'Designer',
+  //     jobId: '9876',
+  //     jobOpenings: 2,
+  //     cvUploadLink: 'https://example.com/upload-cv',
+  //   },
+  // ]);
 
   const [activeCard, setActiveCard] = useState(null);
 
@@ -44,11 +44,11 @@ export const OpeningCard = () => {
     <div className="adjust">
       <h1 className={styles.formHeading}>Openings at Accenture</h1>
       <div className={`${styles.row} row`}>
-        {jobData.map((job, index) => (
-          <div className="col-md-6" key={index}>
+        {
+          <div className="col-md-6" key={props.index}>
             <div
               className={`${styles.card} ${activeCard === index ? styles.active : ''}`}
-              onClick={() => handleMenuClick(index)} // Close the menu when clicking on the card
+              onClick={() => handleMenuClick(props.index)} // Close the menu when clicking on the card
             >
               <div className={styles.cardBody}>
                 <div className={styles.cardOptions}>
@@ -58,13 +58,13 @@ export const OpeningCard = () => {
                 </div>
                 <div className={styles.cardContent}>
                   <div className={styles.leftColumn}>
-                    <h5 className={styles.cardTitle}>{job.jobRole}</h5>
-                    <p className={styles.cardText}>Job ID: {job.jobId}</p>
-                    <p className={styles.cardText}>No. of Job Openings: {job.jobOpenings}</p>
+                    <h5 className={styles.cardTitle}>{props.jobRole}</h5>
+                    <p className={styles.cardText}>Job ID: {props.jobId}</p>
+                    <p className={styles.cardText}>No. of Job Openings: {props.jobOpenings}</p>
                   </div>
                   <div className={styles.rightColumn}>
                     <p className={styles.cardText}>
-                      CV Upload Link: <a href={job.cvUploadLink}>{job.cvUploadLink}</a>
+                      CV Upload Link: <a>{props.cvUploadLink}</a>
                     </p>
                   </div>
                 </div>
@@ -83,7 +83,7 @@ export const OpeningCard = () => {
               </div>
             </div>
           </div>
-        ))}
+        }
       </div>
     </div>
   );
