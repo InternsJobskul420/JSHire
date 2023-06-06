@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const HCSchema = new Schema({
-    compnayName: {
+    companyName: {
         type: String,
         required: true
     },
-    compnayDesc: {
+    description: {
         type: String,
         required: true
     },
@@ -16,7 +16,7 @@ const HCSchema = new Schema({
     },
     phoneNo: {
         type: String,
-        required: true
+        required: false
     },
     password: {
         type: String,
@@ -24,4 +24,4 @@ const HCSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('SuperUserDB', HCSchema);
+module.exports = mongoose.model('HiringCompanies', HCSchema);
