@@ -19,7 +19,7 @@ const CandSchema = new Schema({
         contentType: String,
         required: true
     },
-    pfp: {
+    pfp: { // profile picture
         data: Buffer,
         contentType: String,
         required: true

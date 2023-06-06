@@ -1,10 +1,13 @@
 # Dependencies downloaded
 
+### npm install bcryptjs
+### npm install react-icons
 
+-------------------------------------------------------------------------------------------------------------------------
 
 # Styling convention for JSHire
 
-#Input filed
+## Input filed
 input {
   padding: 10px;
   border-radius: 2.5rem;
