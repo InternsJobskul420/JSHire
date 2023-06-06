@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios'
 import styles from './OpeningCard.module.css';
 import { FaTrash, FaEye } from 'react-icons/fa';
 
@@ -34,11 +35,17 @@ export const OpeningCard = (props) => {
     }
   };
 
-  const handleRemoveCard = (index) => {
-    const updatedJobData = [...jobData];
-    updatedJobData.splice(index, 1);
-    setJobData(updatedJobData);
-  };
+  // const handleRemoveCard = (index) => {
+  //   const updatedJobData = [...jobData];
+  //   updatedJobData.splice(index, 1);
+  //   setJobData(updatedJobData);
+  // };
+
+  const handleRemoveCard = async(index) =>{
+    const response = await axios.post('',{
+
+    })
+  }
 
   return (
     <div className="adjust">
@@ -47,7 +54,7 @@ export const OpeningCard = (props) => {
         {
           <div className="col-md-6" key={props.index}>
             <div
-              className={`${styles.card} ${activeCard === index ? styles.active : ''}`}
+              className={`${styles.card} ${activeCard === props.index ? styles.active : ''}`}
               onClick={() => handleMenuClick(props.index)} // Close the menu when clicking on the card
             >
               <div className={styles.cardBody}>
@@ -68,9 +75,9 @@ export const OpeningCard = (props) => {
                     </p>
                   </div>
                 </div>
-                {activeCard === index && (
+                {activeCard === props.index && (
                   <div className={styles.cardMenu}>
-                    <span onClick={() => handleRemoveCard(index)}>
+                    <span onClick={handleRemoveCard(props.jobId)}>
                       <FaTrash className={styles.menuIcon} />
                       Remove
                     </span>

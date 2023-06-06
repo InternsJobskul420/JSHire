@@ -24,4 +24,4 @@ const JOSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('JobOpening', JOSchema);
+module.exports = mongoose.model('JobOpenings', JOSchema);

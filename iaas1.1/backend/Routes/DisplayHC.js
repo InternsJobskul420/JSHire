@@ -26,8 +26,8 @@ router.post('/companydetails', async(req,res)=>{
         let name = req.body.companyName;
         let details = await HC.findOne({companyName: name})
         console.log("fetching details of the company")
-        console.log(details)
-        console.log(name);
+        // console.log(details)
+        // console.log(name);
         res.send(details);
 
     } catch (error) {
@@ -38,10 +38,13 @@ router.post('/companydetails', async(req,res)=>{
 router.post('/updatecompanydata', async(req,res)=>{
     try {
         let credentials = req.body.updatedCredentials;
+        // console.log("inside update")
         // console.log(credentials)
         let name = req.body.updatedCredentials.companyName;
+        // console.log(name);
         let details = await HC.findOneAndUpdate({companyName: name},{
-            description : req.body.updatedCredentials.companyName,
+            // companyName:req.body.updatedCredentials.companyName,
+            description : req.body.updatedCredentials.description,
             email : req.body.updatedCredentials.email
         })
         // console.log(details)

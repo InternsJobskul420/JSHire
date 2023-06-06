@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import NavigationBar from '../../../components/NavigationBar/NavigationBar'
@@ -8,6 +8,7 @@ import styles from './UpdateHCAccount.module.css'
 
 const UpdateHCAccount = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const name = location.state.companyName;
   const testname = "cognizant"
   console.log(name)
@@ -38,16 +39,17 @@ const handleSubmit=async(e)=>{
 
     if(companyname){
       let response = await axios.post('http://localhost:80/api/updatecompanydata',{
-     updatedCredentials: testname
+     updatedCredentials: companydetails
   },{
     headers: {
       'Content-Type': 'application/json'
     }
   })
 
-  console.log(companydetails)
+  // console.log(companydetails)
   if(response.data.success){
     alert("updated successfully")
+    navigate('/hiringcompany')
   }
 
     }
@@ -129,7 +131,7 @@ useEffect(()=>{
       <form className={styles.form} onSubmit={handleSubmit} >
         <div className={styles.formGroup}>
           <label htmlFor="companyName">Company Name</label>
-          <input type="text" id="companyName" value={companydetails.companyName } className={styles.formInput} onChange={handleChange} />
+          <input type="text" id="companyName"  value={companydetails.companyName } className={styles.formInput} onChange={handleChange} />
         </div>
         <div className={styles.formGroup}>
           <label htmlFor="company_description">Description</label>
