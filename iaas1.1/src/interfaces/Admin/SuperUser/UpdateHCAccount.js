@@ -10,12 +10,11 @@ const UpdateHCAccount = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const name = location.state.companyName;
-  const testname = "cognizant"
-  console.log(name)
+    // console.log(name)
   const [companyname, setCompanyName] = useState(null);
   const [companydetails, setCompanyDetails] = useState({});
   
-  console.log(companyname);
+  // console.log(companyname);
 
   
 
@@ -26,16 +25,16 @@ const UpdateHCAccount = () => {
       [name]: value,
     }));
 
-    console.log(companydetails);
+    // console.log(companydetails);
   };
 
 
 const handleSubmit=async(e)=>{
   e.preventDefault();
-  console.log("hi");
+  // console.log("hi");
 
   try {
-    console.log("inside fetch")
+    // console.log("inside fetch")
 
     if(companyname){
       let response = await axios.post('http://localhost:80/api/updatecompanydata',{
@@ -73,7 +72,7 @@ const updateData =async()=>{
   //   console.log(companydetails)
   // }, 3000)
 
-  console.log("hi")
+  // console.log("hi")
 
 }
  
@@ -82,9 +81,9 @@ const updateData =async()=>{
   const getDetails= async()=>{
 
     try {
-      console.log(companyname)
-      console.log("inside getdetails")
-      console.log(name)
+      // console.log(companyname)
+      // console.log("inside getdetails")
+      // console.log(name)
       if(companyname){
         const details = await axios.post('http://localhost:80/api/companydetails', {
           companyName:name,        
@@ -94,8 +93,8 @@ const updateData =async()=>{
           }
         });
   
-        console.log(details);
-        console.log(details.data);
+        // console.log(details);
+        // console.log(details.data);
         setCompanyDetails(details.data);
       }
      

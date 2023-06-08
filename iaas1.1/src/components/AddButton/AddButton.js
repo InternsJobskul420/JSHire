@@ -14,7 +14,7 @@ export const AddButton = (props) => {
     }
     
     else if (props.side === "HC"){
-      navigate('/jobopeningform');
+      navigate('/jobopeningform', {state: {companyName : props.companyName, jobNo:props.jobNo}});
     }
   }
 
