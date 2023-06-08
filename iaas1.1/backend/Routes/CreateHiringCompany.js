@@ -2,30 +2,49 @@ const express = require('express');
 const router = express.Router();
 const HC = require('../models/HiringCompany')
 
-router.post('/createhiringcompany', async(req,res)=>{
+router.post('/createhiringcompany', async (req, res) => {
    try {
 
       let data = req.body;
       // console.log(data);
 
-      await HC.create({
-         companyName:req.body.companyName,
-         description :req.body.description,
-         phoneNo : req.body.phoneNo,
-         email : req.body.email,
-         password : req.body.password
-      })
+      let response = await HC.findOne({ email: data.email })
+      console.log(response)
+      // console.log(response.email)
+      if (response === null ) {
 
-      res.json({
-         success:true
-      })
+         console.log("inside create");
+         await HC.create({
+            companyName: req.body.companyName,
+            description: req.body.description,
+            phoneNo: req.body.phoneNo,
+            email: req.body.email,
+            password: req.body.password
+         })
 
-    
+         res.json({
+            exist: 1
+         })
+         
+      }
+      else {
+
+         if(response.email){
+            res.json({
+               exist: 0
+            })
+         }
+         
+
+         
+      }
+
+
    } catch (error) {
-    res.json({
-      success:false
-    })
+      res.json({
+         exist: -1
+      })
    }
 })
 
-module.exports= router;
+module.exports = router;
