@@ -34,11 +34,16 @@ export const HiringCompnayForm = () => {
           'Content-Type': 'application/json'
         }
       });
+
+      console.log(response);
   
-      if (response.data.success) {
+      if (response.data.exist === 0) {
         
-        alert('successfully registered');
-        navigate('/hiringcompany');
+        alert('Email Already Exists');
+      }
+      else {
+        alert('Successfully Created')
+        navigate('/hiringcompany')
       }
       
 

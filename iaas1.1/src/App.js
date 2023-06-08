@@ -29,7 +29,7 @@ function App() {
         <Route path='/endInterview' element={<EndInterview/>}/>
         <Route path='/updatehcaccount' element={<UpdateHCAccount/>}/>
         <Route path='/jobopeningform' element={<JobOpeningForm/>}/>
-        <Route path='/jobopening' element={<JobOpenings />}/>
+        <Route path='/jobopening' element={<JobOpenings/>}/>
         <Route path='/viewcandidates' element={<ViewCandidates/>}/> 
         <Route path='/candidateinterview' element={<CandidateInterview/>}/> 
         <Route path='/equipmenttesting' element={<EquipmentTesting/>}/> 

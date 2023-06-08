@@ -126,7 +126,6 @@ useEffect(()=>{
     <>
     <NavigationBar/>
     <div className={styles.formContainer}>{
-      
       companydetails  ? <> <h1 className={styles.formHeading}>Update {companyname} Account</h1>
       <form className={styles.form} onSubmit={handleSubmit} >
         <div className={styles.formGroup}>

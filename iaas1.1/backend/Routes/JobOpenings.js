@@ -5,9 +5,10 @@ const JO = require('../models/JobOpenings');
 const connectDB = require('../db');
 connectDB();
 
-router.post('/jobopeninglist', (req,res)=>{
+router.post('/displayjoblist', (req,res)=>{
     try {
         JO.find().then((jo)=>{
+            console.log(jo);
             res.send(jo);
         })
     } catch (error) {

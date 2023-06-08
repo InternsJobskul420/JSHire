@@ -12,7 +12,8 @@ const HCSchema = new Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        uniqueItems:true
     },
     phoneNo: {
         type: String,
@@ -24,4 +25,4 @@ const HCSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('HiringCompanies', HCSchema);
+module.exports = mongoose.model('hiringcompanies', HCSchema);

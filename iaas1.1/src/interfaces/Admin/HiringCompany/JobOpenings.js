@@ -11,27 +11,27 @@ export const JobOpenings = () => {
   const [jobOpenings, setJobOpenings] = useState({})
 
 
-  const fetchJobsList = async()=>{
-    let response = await axios.post('http://localhost:80/api/displayjoblist',{},{
-      headers:{
-        'Content-Type': 'application/json'
-      }
-    })
+//   const fetchJobsList = async()=>{
+//     let response = await axios.post('http://localhost:80/api/displayjoblist',{},{
+//       headers:{
+//         'Content-Type': 'application/json'
+//       }
+//     })
 
-    console.log(response);
-    setJobOpenings(response);
-}
+//     console.log(response);
+//     setJobOpenings(response);
+// }
 
 
-useEffect(()=>{
-  fetchJobsList();
+// useEffect(()=>{
+//   fetchJobsList();
 
-},[])
+// },[])
 
   return (
     <>
     <NavigationBar/>
-    {jobOpenings ? <> <OpeningCard/></>:""}
+    {/* {jobOpenings ? <> <OpeningCard/></>:""} */}
    
     <AddButton side="HC"/>
     </>
