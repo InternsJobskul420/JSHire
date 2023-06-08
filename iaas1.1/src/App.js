@@ -35,7 +35,7 @@ function App() {
         <Route path='/equipmenttesting' element={<EquipmentTesting/>}/> 
         <Route path='/loginSU' element={<LoginSU/>}/> 
         <Route path='/loginHC' element={<LoginHC/>}/>
-        {/* <Route path="*" element={<Navigate to="/" />} /> {/* Fallback route for unknown paths */}  */}
+        {/* <Route path="*" element={<Navigate to="/" />} /> {/* Fallback route for unknown paths */}  
         
         
       </Routes>

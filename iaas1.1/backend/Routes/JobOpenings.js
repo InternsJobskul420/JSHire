@@ -5,8 +5,9 @@ const JO = require('../models/JobOpenings');
 const connectDB = require('../db');
 connectDB();
 
+
+
 router.post('/displayjoblist', async(req,res)=>{
-router.post('/displayjoblist', (req,res)=>{
     try {
         // console.log(req.body.companyName);
         // console.log(req.body.companyName.length);
@@ -19,7 +20,6 @@ router.post('/displayjoblist', (req,res)=>{
             // const newJobId = req.body.companyName + "0"
 
             res.json({
-            console.log(jo);
                 data:null,
                 jobs: 1
                
@@ -45,6 +45,7 @@ router.post('/displayjoblist', (req,res)=>{
         // let response = await JO.findOne({companyName: company});
         // res.send(response)
         // console.log(response)
+
 
 
 
