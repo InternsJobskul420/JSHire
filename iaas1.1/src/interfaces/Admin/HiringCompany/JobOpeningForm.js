@@ -37,10 +37,12 @@ export const JobOpeningForm = () => {
     // console.log(jobDetails)
     console.log(name)
     if(name){
+
       let response = await axios.post('http://localhost:80/api/createnewjobopening', {
         company: name,
         jobNo: jobNo,
-        job_details: jobDetails
+        job_details: jobDetails,
+        jobId:jobDetails.jobId
     },{
       headers:{
         'Content-Type': 'application/json'
@@ -67,6 +69,7 @@ export const JobOpeningForm = () => {
       setJobDetails((prevData) => ({
         ...prevData,
         jobId: name+jobNo,
+        link : `http://localhost:3000/apply/${name+jobNo}`
       }));
 
       console.log(jobDetails)

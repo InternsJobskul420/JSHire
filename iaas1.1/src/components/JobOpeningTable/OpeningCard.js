@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import styles from './OpeningCard.module.css';
 import { FaTrash, FaEye } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export const OpeningCard = (props) => {
   
@@ -51,7 +52,7 @@ export const OpeningCard = (props) => {
                   </div>
                   <div className={styles.rightColumn}>
                     <p className={styles.cardText}>
-                      CV Upload Link: 
+                      CV Upload Link: <Link>{props.link}</Link>
                     </p>
                   </div>
                 </div>

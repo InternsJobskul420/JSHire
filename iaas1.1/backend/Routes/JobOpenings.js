@@ -62,6 +62,9 @@ router.post('/createnewjobopening', async(req,res)=>{
     
 
         let details = req.body;
+        // let jobId = req.body.jobId
+        // let company = req.body.companyName
+        // let url = `'http://localhost:3000/apply/${company}/${jobId}`
         
         // console.log(details);
         // console.log(details.job_details);

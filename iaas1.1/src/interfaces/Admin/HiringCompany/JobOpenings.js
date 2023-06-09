@@ -86,7 +86,8 @@ useEffect(()=>{
           <OpeningCard key={index}
           jobRole = {job.jobRole} 
           jobId={job.jobId} 
-          NumOfOpenings = {job.NumOfOpenings}/>
+          NumOfOpenings = {job.NumOfOpenings}
+          link = {job.link}/>
         )
       })
       // jobOpenings.map((details)=>{
