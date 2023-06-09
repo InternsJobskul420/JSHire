@@ -16,6 +16,7 @@ import CandidateInterview from './interfaces/Candidate/CandidateInterview';
 import EquipmentTesting from './interfaces/Candidate/EquipmentTesting';
 import LoginSU from './interfaces/Admin/SuperUser/LoginSU';
 import LoginHC from './interfaces/Admin/HiringCompany/LoginHC';
+import { UploadCv } from './interfaces/Candidate/UploadCv';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/hiringcompany' element={<HiringCompany/>}/>
         <Route path='/candidatewelcome' element={<WelcomePage/>}/>
         <Route path='/endInterview' element={<EndInterview/>}/>
+        <Route path= '/uploadcv' element={<UploadCv/>}/>
         <Route path='/updatehcaccount' element={<UpdateHCAccount/>}/>
         <Route path='/jobopeningform' element={<JobOpeningForm/>}/>
         <Route path='/jobopening' element={<JobOpenings/>}/>
@@ -35,8 +37,6 @@ function App() {
         <Route path='/equipmenttesting' element={<EquipmentTesting/>}/> 
         <Route path='/loginSU' element={<LoginSU/>}/> 
         <Route path='/loginHC' element={<LoginHC/>}/> 
-        
-        
       </Routes>
     </Router>
   );

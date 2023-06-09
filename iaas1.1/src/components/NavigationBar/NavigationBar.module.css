@@ -16,10 +16,13 @@
 }
 
 .jobskulLogo {
-  width: 1rem ; /* Set the width of the logo */
-height: 1rem; /* Set the height of the logo */
-/* background-image: url(''); Optionally, set a background image for the logo */
-background-size: contain; /* Adjust the background image size */
+  width: 1rem;
+  /* Set the width of the logo */
+  height: 1rem;
+  /* Set the height of the logo */
+  /* background-image: url(''); Optionally, set a background image for the logo */
+  background-size: contain;
+  /* Adjust the background image size */
 }
 
 .menu-icon {
@@ -71,15 +74,16 @@ background-size: contain; /* Adjust the background image size */
 
 @media (max-width: 600px) {
 
-  .test{
+  .test {
     display: block !important;
     color: black;
-    
+
   }
+
   .menu-icon {
     display: block;
     cursor: pointer;
-   
+
     width: 10px;
     height: 20px;
   }
@@ -110,6 +114,6 @@ background-size: contain; /* Adjust the background image size */
   }
 }
 
-.test{
+.test {
   display: none;
 }
