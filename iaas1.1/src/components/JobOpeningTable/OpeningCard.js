@@ -2,29 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import styles from './OpeningCard.module.css';
 import { FaTrash, FaEye } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export const OpeningCard = (props) => {
-  // const [jobData, setJobData] = useState([
-  //   {
-  //     jobRole: 'Software Engineer',
-  //     jobId: '1234',
-  //     jobOpenings: 5,
-  //     cvUploadLink: 'https://example.com/upload-cv',
-  //   },
-  //   {
-  //     jobRole: 'Consultant',
-  //     jobId: '5678',
-  //     jobOpenings: 3,
-  //     cvUploadLink: 'https://example.com/upload-cv',
-  //   },
-  //   {
-  //     jobRole: 'Designer',
-  //     jobId: '9876',
-  //     jobOpenings: 2,
-  //     cvUploadLink: 'https://example.com/upload-cv',
-  //   },
-  // ]);
-
+  
   const [activeCard, setActiveCard] = useState(null);
 
   const handleMenuClick = (index) => {
@@ -42,14 +23,14 @@ export const OpeningCard = (props) => {
   // };
 
   const handleRemoveCard = async(index) =>{
-    const response = await axios.post('',{
+    // const response = await axios.post('',{
 
-    })
+    // })
   }
 
   return (
     <div className="adjust">
-      <h1 className={styles.formHeading}>Openings at Accenture</h1>
+      
       <div className={`${styles.row} row`}>
         {
           <div className="col-md-6" key={props.index}>
@@ -67,11 +48,11 @@ export const OpeningCard = (props) => {
                   <div className={styles.leftColumn}>
                     <h5 className={styles.cardTitle}>{props.jobRole}</h5>
                     <p className={styles.cardText}>Job ID: {props.jobId}</p>
-                    <p className={styles.cardText}>No. of Job Openings: {props.jobOpenings}</p>
+                    <p className={styles.cardText} style={{"fontWeight": 600}}>No. of Job Openings: {props.NumOfOpenings}</p>
                   </div>
                   <div className={styles.rightColumn}>
                     <p className={styles.cardText}>
-                      CV Upload Link: <a>{props.cvUploadLink}</a>
+                      CV Upload Link: <Link>{props.link}</Link>
                     </p>
                   </div>
                 </div>

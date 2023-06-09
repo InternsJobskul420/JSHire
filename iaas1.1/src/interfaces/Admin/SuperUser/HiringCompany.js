@@ -17,7 +17,7 @@ export const HiringCompany = () => {
           }
         });
   
-        console.log(response.data);
+        // console.log(response.data);
         setHiringCompanies(response.data);
       } catch (error) {
         console.error(error);

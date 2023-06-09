@@ -35,9 +35,8 @@ export const HiringCompnayForm = () => {
         }
       });
 
-      console.log(response);
-  
-      if (response.data.exist === 0) {
+    
+      if (response.data.success) {
         
         alert('Email Already Exists');
       }

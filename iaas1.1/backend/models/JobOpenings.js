@@ -2,26 +2,24 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const JOSchema = new Schema({
-    jobRole: {
+
+    company:{
         type: String,
         required: true
     },
-    NumOfOpenings: {
+
+    numOfJobs:{
         type: Number,
         required: true
     },
-    jobDesc: {
-        type: String,
-        required: true
-    },
-    jobReq: {   // Job Requirments
-        type: String,
-        required: true
-    },
-    basicQualif: {  // Basic Qualifications
-        type: String,
-        required: true
+
+
+    openings:{
+        type: Array,
+        required:true
     }
+
+    
 })
 
 module.exports = mongoose.model('JobOpenings', JOSchema);

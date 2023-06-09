@@ -11,7 +11,7 @@ export const HCCard = (props) => {
   };
 
   const addopening = () => {
-    navigate("/jobopening");
+    navigate("/jobopening",{state: {"companyName":props.CompanyName}} );
   };
 
   return (
