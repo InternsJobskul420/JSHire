@@ -25,10 +25,9 @@ function App() {
         <Route path='hiringcompanyform' element={<HiringCompnayForm/>}/>
         {/* <Route path='/hiringcompany' element={<HiringCompany/>}/> */}
         <Route path="hiringcompany" element={<HiringCompany />}/>
-         
         <Route path='/candidatewelcome' element={<WelcomePage/>}/>
         <Route path='/endInterview' element={<EndInterview/>}/>
-        <Route path= '/apply/:jobId' element={<UploadCv/>}/>
+        <Route path= '/apply/:company/:jobId' element={<UploadCv/>}/>
         <Route path='/updatehcaccount' element={<UpdateHCAccount/>}/>
         <Route path='/jobopeningform' element={<JobOpeningForm/>}/>
         <Route path='/jobopening' element={<JobOpenings/>}/>

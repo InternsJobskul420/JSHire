@@ -69,7 +69,7 @@ export const JobOpeningForm = () => {
       setJobDetails((prevData) => ({
         ...prevData,
         jobId: name+jobNo,
-        link : `http://localhost:3000/apply/${name+jobNo}`
+        link : `http://localhost:3000/apply/${name}/${name+jobNo}`
       }));
 
       console.log(jobDetails)

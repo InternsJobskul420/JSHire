@@ -7,9 +7,18 @@ import { useNavigate } from 'react-router-dom'
 export const UploadCv = () => {
 
   const [credentialsStd, setCredentialsStd] = useState({});
+  const [jobId, setJobId] = useState('');
+  const [companyName, setCompanyName] = useState('');
 
   let navigate = useNavigate();
   console.log(credentialsStd);
+
+  const extractJobIdAndCompanyName = (url) => {
+    const parts = url.split('/');
+    const jobId = parts[parts.length - 1];
+    const companyName = parts[parts.length - 2];
+    return { jobId, companyName };
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,8 +75,15 @@ export const UploadCv = () => {
       ...prevData,
       link: currentUrl,
     }));
+
+    const { jobId, companyName } = extractJobIdAndCompanyName(currentUrl);
+    setJobId(jobId);
+    setCompanyName(companyName);
+
   }, []);
 
+  console.log(jobId); // The extracted job ID
+  console.log(companyName); // The extracted company name
 
   return (
     <div>
@@ -79,7 +95,7 @@ export const UploadCv = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.leftColumn}>
-            <h1>Junior Software Developer</h1>
+            <h1>Job Role Name</h1>
             <p>Job ID: <span>12345</span></p>
             <h2>Company description</h2>
             <p>Company Name</p>

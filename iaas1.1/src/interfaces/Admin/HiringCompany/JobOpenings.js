@@ -83,7 +83,9 @@ useEffect(()=>{
     {jobOpenings ?
       jobOpenings.map((job, index)=>{
         return(
-          <OpeningCard key={index}
+          <OpeningCard 
+          key={index}
+          companyName={name}
           jobRole = {job.jobRole} 
           jobId={job.jobId} 
           NumOfOpenings = {job.NumOfOpenings}

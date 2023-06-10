@@ -25,7 +25,7 @@ const CandSchema = new Schema({
     //     required: true
     // }
     openings:[{
-        jobRole:{
+        jobID:{
             type: String,
             required: true
         },
