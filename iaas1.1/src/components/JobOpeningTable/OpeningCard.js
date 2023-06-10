@@ -52,7 +52,7 @@ export const OpeningCard = (props) => {
                   </div>
                   <div className={styles.rightColumn}>
                     <p className={styles.cardText}>
-                      CV Upload Link: <Link>{props.link}</Link>
+                      CV Upload Link: <Link to={`http://localhost:3000/apply/${props.jobId}`} >{props.link}</Link>
                     </p>
                   </div>
                 </div>

@@ -28,7 +28,7 @@ function App() {
          
         <Route path='/candidatewelcome' element={<WelcomePage/>}/>
         <Route path='/endInterview' element={<EndInterview/>}/>
-        <Route path= '/uploadcv' element={<UploadCv/>}/>
+        <Route path= '/apply/:jobId' element={<UploadCv/>}/>
         <Route path='/updatehcaccount' element={<UpdateHCAccount/>}/>
         <Route path='/jobopeningform' element={<JobOpeningForm/>}/>
         <Route path='/jobopening' element={<JobOpenings/>}/>

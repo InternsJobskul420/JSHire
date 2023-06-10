@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import styles from './UploadCv.module.css';
 import jobskulLogo from '../../assets/jobskulLogo.svg';
@@ -16,11 +16,12 @@ export const UploadCv = () => {
     console.log(credentialsStd)
     try {
       console.log("inside handle submit");
-      let response = await axios.post("http://localhost:80/api/loginSU",
+      let response = await axios.post("http://localhost:80/api/UploadCv",
         {
           name: credentialsStd.name,
           email: credentialsStd.email,
           collegeName: credentialsStd.collegeName,
+          link: credentialsStd.link,
         },
         {
           headers: {
@@ -57,6 +58,17 @@ export const UploadCv = () => {
     // console.log(credentialsSU);
   };
 
+  useEffect(() => {
+    // Fetch the current URL from the browser navigation
+    const currentUrl = window.location.href;
+    console.log(currentUrl);
+    setCredentialsStd((prevData) => ({
+      ...prevData,
+      link: currentUrl,
+    }));
+  }, []);
+
+
   return (
     <div>
       <nav className={styles.navbar}>
@@ -87,12 +99,12 @@ export const UploadCv = () => {
               <label className={styles.label}>
                 Email
                 <input type="email" name="email" className={styles.input} value={credentialsStd.email}
-                  onChange={handleChange}/>
+                  onChange={handleChange} />
               </label>
               <label className={styles.label}>
                 College name
                 <input type="text" name="college" className={styles.input} value={credentialsStd.collegeName}
-                  onChange={handleChange}/>
+                  onChange={handleChange} />
               </label>
               <button className={styles.button}>Upload CV</button>
               <button className={styles.button}>Upload Profile Picture</button>
