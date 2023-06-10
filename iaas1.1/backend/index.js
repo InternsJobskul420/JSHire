@@ -27,7 +27,7 @@ server.use('/api', require("./Routes/CreateHiringCompany"));
 server.use('/api', require("./Routes/DisplayHC"));
 server.use('/api', require("./Routes/loginSU"));
 server.use('/api', require("./Routes/JobOpenings"));
-
+server.use('/api', require("./Routes/Candidates"));
 
 
 
