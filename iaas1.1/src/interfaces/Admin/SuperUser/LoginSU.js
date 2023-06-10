@@ -77,8 +77,8 @@ const LoginSU = () => {
               id="email"
               name="username"
               value={credentialsSU.username}
-              className={styles.roundedInput}
               onChange={handleChange}
+              className={styles.roundedInput}
             />
           </div>
           <div className={styles.formGroup}>

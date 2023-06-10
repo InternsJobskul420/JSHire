@@ -45,12 +45,12 @@
 }
 
 .rightColumn {
-    margin-top: auto;
     flex: 1;
     padding-left: 1rem;
 }
 
 form {
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
 }
@@ -68,13 +68,39 @@ form {
 
 .button {
     padding: 0.5rem 1rem;
-    background-color: #007bff;
-    color: #fff;
     border: none;
     cursor: pointer;
     margin-bottom: 0.5rem;
+    height: 2.5rem;
+    border-radius: 2rem;
+    background-color: #056FC6;
+    color: white;
+    font-family: 'Raleway';
+    cursor: pointer;
+    transition-duration: 0.4s;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.button:last-child {
-    margin-bottom: 0;
+.button:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.button:active {
+    background-color: #04589E;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: translateY(3px);
+}
+
+.subButton {
+    background-color: #D52E2D;
+}
+
+.subButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.subButton:active {
+    background-color: #aa2424;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: translateY(3px);
 }

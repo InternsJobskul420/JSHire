@@ -94,11 +94,11 @@ export const HiringCompnayForm = () => {
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.column}>
           <div className={styles.formGroup}>
-          <label htmlFor="companyName">Company Name</label>
+          <label className={styles.Mylabel} htmlFor="companyName">Company Name</label>
           <input type="text" id="companyName" name="companyName" value={credentials.companyName} required className={styles.formInput} onChange={handleChange} />
         </div>
             <div className={styles.formGroup}>
-              <label htmlFor="company-description">Company Description </label>
+              <label className={styles.Mylabel} htmlFor="company-description">Company Description </label>
               <textarea
                 id="company-description"
                 name="description"
@@ -111,7 +111,7 @@ export const HiringCompnayForm = () => {
           </div>
           <div className={styles.column}>
           <div className={styles.formGroup}>
-        <label htmlFor="phoneNumber">Phone Number</label>
+        <label className={styles.Mylabel} htmlFor="phoneNumber">Phone Number</label>
         <input
           type="number"
           id="quantity"
@@ -121,11 +121,11 @@ export const HiringCompnayForm = () => {
         onChange={handleChange}/>
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="email">Email</label>
+          <label className={styles.Mylabel} htmlFor="email">Email</label>
           <input type="email" id="email" name="email" value={credentials.email} required className={styles.formInput} onChange={handleChange}/>
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="password">Password</label>
+          <label className={styles.Mylabel} htmlFor="password">Password</label>
           <input type="password" id="password"name="password" value={credentials.password} required className={styles.formInput} onChange={handleChange}/>
         </div>
             <div className={styles.formGroup}>

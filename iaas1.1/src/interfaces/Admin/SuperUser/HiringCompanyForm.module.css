@@ -121,14 +121,14 @@ body {
   margin-bottom: 20px;
 }
 
-label {
+.Mylabel {
   display: block;
   margin-bottom: 5px;
   color: #484848;
   
 }
 
-label:after {
+.Mylabel:after {
   content:" *";
   color: red;
 }
