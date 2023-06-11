@@ -3,12 +3,11 @@ const server = express();
 const socket = require('socket.io');
 const port = process.env.PORT || 80;
 const cors = require('cors');
-
-const mongoconnect= require("./db")
-mongoconnect();
+const connectDB = require('./db');
+const dotenv = require('dotenv');
+dotenv.config();
 
 server.use(express.json());
-
 server.use(cors());
 
 server.use((req,res,next)=>{
@@ -19,6 +18,7 @@ server.use((req,res,next)=>{
     );
     next();
   })
+
 
 
 
@@ -35,6 +35,21 @@ server.get('/', (req,res)=>{
     res.send("Hello world")
 })
 
-server.listen(port, ()=>{
-  console.log('server started')
+const start=async()=>{
+  try {
+
+    // console.log(process.env.mongoURI)
+    await connectDB(process.env.mongoURI);
+    
+    server.listen(port, ()=>{
+    console.log('server started')
 })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+
+start();
+

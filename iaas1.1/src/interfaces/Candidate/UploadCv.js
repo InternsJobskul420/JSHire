@@ -67,7 +67,7 @@ export const UploadCv = () => {
     const { name, value } = e.target;
     setCredentialsStd((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: files ? files[0]: value,
     }));
   };
 
@@ -138,8 +138,11 @@ export const UploadCv = () => {
                   onChange={handleChange}
                 />
               </label>
-              <button className={styles.button}>Upload CV</button>
-              <button className={styles.button}>Upload Profile Picture</button>
+
+              <input type='file' name='cv' onChange={handleChange}></input>
+              <input type='file' name='profile' onChange={handleChange}></input>
+              {/* <button className={styles.button}>Upload CV</button>
+              <button className={styles.button}>Upload Profile Picture</button> */}
               <button type="submit" className={styles.subButton}>Submit</button>
             </form>
           </div>

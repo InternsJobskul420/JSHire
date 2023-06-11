@@ -4,7 +4,7 @@ const router = express.Router();
 const HC = require('../models/HiringCompany')
 const connectDB = require('../db')
 
-connectDB();
+// connectDB();
 
 router.post('/displayhiringcompanies', (req,res)=>{
     try {
