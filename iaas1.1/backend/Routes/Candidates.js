@@ -2,53 +2,89 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const connectDB = require('../db')
-const Candidate = require('../models/Candidates');
-const HC = require('../models/HiringCompany');
+const Candidate= require('../models/Candidates');
+const HC = require('../models/HiringCompany'); 
 const JO = require('../models/JobOpenings');
+const upload = require('../middleware/multer')
 connectDB();
-router.post('/apply', async (req, res) => {
+router.post('/UploadCv',async(req,res)=>{
 
-    let details = req.body.details;
-    let jobID = req.body.jobId;
-    let company = req.body.companyName;
-    // let email = req.body.email;
-    // let collegeName = req.body.collegeName;
-    // let companyName = req.body.companyName;
-    // let jobId = req.body.jobId;
-    // console.log("reading body data")
-    console.log(details);
-    console.log(jobID);
-    console.log(company);
-    // console.log(email);
-    // console.log(collegeName);
-    // console.log(companyName);
-    // console.log(jobId);
+    let name = req.body.name;
+    let email = req.body.email;
+    let collegeName = req.body.collegeName;
+    console.log("reading body data")
+    console.log(name);
+    console.log(email);
+    console.log(collegeName);
 
-    router.post('/fetchdetails', async (req, res) => {
-        try {
-            const companyDetails = await HC.findOne({ companyName: company });
-
-            if (companyDetails) {
-                const { description } = companyDetails;
-
-                const jobDetails = await JO.findOne({ 'openings.jobId': jobID });
-
-                if (jobDetails) {
-                    const { jobReq, basicQualif, jobRole } = jobDetails.openings.find((opening) => opening.jobId === jobID);
-
-                    res.json({ description, jobReq, basicQualif, jobRole });
-                } else {
-                    res.status(404).json({ error: 'Job not found' });
-                }
-            } else {
-                res.status(404).json({ error: 'Company not found' });
-            }
-        } catch (error) {
-            console.log(error);
-            res.status(500).json({ error: 'Server error' });
+    try {
+        console.log("inside try");
+        let fetchedSUDetails = await mongoose.connection.db.collection('Candidates').find({}).toArray();
+        // console.log(fetchedSUDetails[0])
+        // console.log(fetchedSUDetails[0].username)
+        // console.log(fetchedSUDetails[0].password)
+        let details = fetchedSUDetails[0]
+        if(details.username === username && details.password === password ){
+            console.log("matched username")
+            res.send({success:true})
         }
-    });
+
+        else{
+            res.send({
+                success:false
+            })
+        }
+
+        
+       
+
+        // if(sudata.username === username && sudata.password === password )
+        // return res.send("authentication successful")
+    } catch (error) {
+        res.send("error in connection");
+        console.log(error)
+    } 
 
 });
 
-module.exports = router;
+
+
+router.post('/fetchcompanydata',async(req,res)=>{
+
+    try {
+        data = req.body
+        console.log(req.body)
+        let details = await HC.findOne({companyName: data.name})
+        let joDes = await JO.findOne({company: data.name, 'openings.jobId': data.jobId },{ 'openings.$': 1 })
+        // console.log(joDes)
+        // console.log(joDes.openings[0])
+        let jobdetails = joDes.openings[0]
+        console.log(jobdetails)
+        console.log(jobdetails.jobDesc)
+        console.log(jobdetails.basicQualif)
+        
+        if(details && joDes){
+            res.json({
+                CD: details.description,
+                JobRole: jobdetails.jobRole,
+                JD:jobdetails.jobDesc,
+                JR:jobdetails.jobReq,
+                BQ:jobdetails.basicQualif,
+            })
+        }
+
+        else{
+            res.send({
+                description: null
+            })
+        }
+       
+    } catch (error) {
+        console.log(error);
+    }
+   
+   
+
+})
+
+module.exports= router;
