@@ -18,7 +18,7 @@ export const UploadCv = () => {
   const extractJobIdAndCompanyName = (url) => {
     const parts = url.split('/');
     const jobId = parts[parts.length - 1];
-    
+
     const companyName = parts[parts.length - 2];
     return { jobId, companyName };
   };
@@ -30,14 +30,14 @@ export const UploadCv = () => {
       console.log('inside handle submit');
 
       const formData = new FormData();
-    formData.append('name', credentialsStd.name);
-    formData.append('email', credentialsStd.email);
-    formData.append('collegeName', credentialsStd.college);
-    formData.append('cv', credentialsStd.cv);
-    formData.append('profilePic', credentialsStd.profile);
+      formData.append('name', credentialsStd.name);
+      formData.append('email', credentialsStd.email);
+      formData.append('collegeName', credentialsStd.college);
+      formData.append('cv', credentialsStd.cv);
+      formData.append('profilePic', credentialsStd.profile);
 
-    formData.append('jobRole', jobDetails.jobRole);
-    formData.append('link', window.location.href);
+      formData.append('jobRole', jobDetails.jobRole);
+      formData.append('link', window.location.href);
 
       // let response = await axios.post(
       //   'http://localhost:80/api/UploadCv',
@@ -65,28 +65,28 @@ export const UploadCv = () => {
   const fetchCompanyData = async () => {
     // console.log(jobId)
     try {
-      let response = await axios.post('http://localhost:80/api/fetchcompanydata',{
+      let response = await axios.post('http://localhost:80/api/fetchcompanydata', {
         jobId: jobId,
-        name:companyName,
-        jobdetails:jobDetails
+        name: companyName,
+        jobdetails: jobDetails
 
       });
-      const { CD,JobRole,JD, BQ, JR } = response.data;
+      const { CD, JobRole, JD, BQ, JR } = response.data;
 
       // Update the state variables with the fetched data
-      setJobDetails({ CD,JobRole, JD, BQ, JR });
+      setJobDetails({ CD, JobRole, JD, BQ, JR });
     } catch (error) {
       console.log(error);
     }
   };
 
-  const test =()=>{
+  const test = () => {
     console.log(jobDetails)
   }
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-  
+
     if (files) {
       setCredentialsStd((prevData) => ({
         ...prevData,
@@ -101,22 +101,22 @@ export const UploadCv = () => {
   };
 
   useEffect(() => {
-    
 
-    if(currentUrl){
-    const parts = currentUrl.split('/');
-    const Id = parts[parts.length - 1];
-    const name = parts[parts.length - 2];
-    setJobId(Id)
-    setCompanyName(name);
+
+    if (currentUrl) {
+      const parts = currentUrl.split('/');
+      const Id = parts[parts.length - 1];
+      const name = parts[parts.length - 2];
+      setJobId(Id)
+      setCompanyName(name);
     }
 
-    if(jobId){
+    if (jobId) {
       fetchCompanyData();
     }
-    
 
-    
+
+
   }, [jobId]);
 
   // console.log(jobId); // The extracted job ID
@@ -132,7 +132,7 @@ export const UploadCv = () => {
         </div>
       </nav>
 
-      {jobDetails?<div className={styles.container}>
+      {jobDetails ? <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.leftColumn}>
             {test()}
@@ -183,8 +183,8 @@ export const UploadCv = () => {
               <label for="cv">
                 Upload your CV
                 <input type='file' name='cv' onChange={handleChange} placeholder='CV' ></input></label>
-              
-                <label for="profile">
+
+              <label for="profile">
                 Upload your Profile Picture
                 <input type='file' name='profile' onChange={handleChange} placeholder='Profile' ></input></label>
               {/* <button className={styles.button}>Upload CV</button>
@@ -193,8 +193,8 @@ export const UploadCv = () => {
             </form>
           </div>
         </div>
-      </div> :""}
-      
+      </div> : ""}
+
     </div>
   );
 };

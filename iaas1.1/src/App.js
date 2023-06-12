@@ -15,6 +15,7 @@ import EquipmentTesting from './interfaces/Candidate/EquipmentTesting';
 import LoginSU from './interfaces/Admin/SuperUser/LoginSU';
 import LoginHC from './interfaces/Admin/HiringCompany/LoginHC';
 import { UploadCv } from './interfaces/Candidate/UploadCv';
+import { ScheduleInterview } from './interfaces/Admin/HiringCompany/ScheduleInterview';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='/viewcandidates' element={<ViewCandidates/>}/> 
         <Route path='/candidateinterview' element={<CandidateInterview/>}/> 
         <Route path='/equipmenttesting' element={<EquipmentTesting/>}/> 
+        <Route path='/scheduleinterview' element={<ScheduleInterview/>}/> 
         <Route path='/loginSU' element={<LoginSU/>}/> 
         <Route path='/loginHC' element={<LoginHC/>}/>
         {/* <Route path="*" element={<Navigate to="/" />} /> {/* Fallback route for unknown paths */}  
