@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import NavigationBar from '../../../components/NavigationBar/NavigationBar';
+import BreadcrumbNav from '../../../components/BreadcrumbNav/BreadcrumbNav';
 import { HCCard } from '../../../components/HCCard/HCCard';
 import styles from './HiringCompany.module.css'; // Import the CSS module
 import { AddButton } from '../../../components/AddButton/AddButton';
@@ -34,7 +35,9 @@ export const HiringCompany = () => {
   return (
     <>
       <NavigationBar />
-
+      <BreadcrumbNav routes={[
+      { path: '/hiringcompany', label: 'Hiring Companies' }
+    ]} />
       <h1 className={styles.formHeading}>Create An Account</h1>
       <div className={styles['display-cards']}>
 

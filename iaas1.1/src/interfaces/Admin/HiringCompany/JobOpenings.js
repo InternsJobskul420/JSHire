@@ -5,6 +5,7 @@ import sty from '../SuperUser/HiringCompany.module.css'; // Import the CSS modul
 import NavigationBar from '../../../components/NavigationBar/NavigationBar';
 import { OpeningCard } from '../../../components/JobOpeningTable/OpeningCard';
 import { AddButton } from '../../../components/AddButton/AddButton';
+import BreadcrumbNav from '../../../components/BreadcrumbNav/BreadcrumbNav'
 import { useLocation } from 'react-router-dom';
 
 
@@ -79,6 +80,7 @@ useEffect(()=>{
   return (
     <>
     <NavigationBar/>
+    <BreadcrumbNav routes={[{ path: '/jobopening', label: 'Job Openings' }]} />
     <h1 className={sty.formHeading}>Create Job Openings for {name}</h1>
     {jobOpenings ?
       jobOpenings.map((job, index)=>{

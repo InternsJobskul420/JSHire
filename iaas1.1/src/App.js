@@ -1,6 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import BreadcrumbNav from './components/BreadcrumbNav/BreadcrumbNav';
+
+// Import your components here
 import Login from './components/Login/Login';
 import { HiringCompnayForm } from './interfaces/Admin/SuperUser/HiringCompnayForm';
 import { HiringCompany } from './interfaces/Admin/SuperUser/HiringCompany';
@@ -18,30 +20,46 @@ import { UploadCv } from './interfaces/Candidate/UploadCv';
 import { ScheduleInterview } from './interfaces/Admin/HiringCompany/ScheduleInterview';
 
 function App() {
+  const routes = [
+    { path: '/', label: 'Home' },
+    { path: '/hiringcompanyform', label: 'Hiring Company Form' },
+    { path: '/hiringcompany', label: 'Hiring Company' },
+    { path: '/candidatewelcome', label: 'Candidate Welcome' },
+    { path: '/endInterview', label: 'End Interview' },
+    { path: '/apply/:company/:jobId', label: 'Upload CV' },
+    { path: '/updatehcaccount', label: 'Update HC Account' },
+    { path: '/jobopeningform', label: 'Job Opening Form' },
+    { path: '/jobopening', label: 'Job Openings' },
+    { path: '/viewcandidates', label: 'View Candidates' },
+    { path: '/candidateinterview', label: 'Candidate Interview' },
+    { path: '/equipmenttesting', label: 'Equipment Testing' },
+    { path: '/scheduleinterview', label: 'Schedule Interview' },
+    { path: '/loginSU', label: 'Login SU' },
+    { path: '/loginHC', label: 'Login HC' },
+  ];
+
   return (
     <Router>
-      <Routes>
-        
-        <Route path='/' element={<Login/>}/> /* Set a page as home */
-        <Route path='hiringcompanyform' element={<HiringCompnayForm/>}/>
-        {/* <Route path='/hiringcompany' element={<HiringCompany/>}/> */}
-        <Route path="hiringcompany" element={<HiringCompany />}/>
-        <Route path='/candidatewelcome' element={<WelcomePage/>}/>
-        <Route path='/endInterview' element={<EndInterview/>}/>
-        <Route path= '/apply/:company/:jobId' element={<UploadCv/>}/>
-        <Route path='/updatehcaccount' element={<UpdateHCAccount/>}/>
-        <Route path='/jobopeningform' element={<JobOpeningForm/>}/>
-        <Route path='/jobopening' element={<JobOpenings/>}/>
-        <Route path='/viewcandidates' element={<ViewCandidates/>}/> 
-        <Route path='/candidateinterview' element={<CandidateInterview/>}/> 
-        <Route path='/equipmenttesting' element={<EquipmentTesting/>}/> 
-        <Route path='/scheduleinterview' element={<ScheduleInterview/>}/> 
-        <Route path='/loginSU' element={<LoginSU/>}/> 
-        <Route path='/loginHC' element={<LoginHC/>}/>
-        {/* <Route path="*" element={<Navigate to="/" />} /> {/* Fallback route for unknown paths */}  
-        
-        
-      </Routes>
+      <div>
+        <BreadcrumbNav routes={routes} />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/hiringcompanyform" element={<HiringCompnayForm />} />
+          <Route path="/hiringcompany" element={<HiringCompany />} />
+          <Route path="/candidatewelcome" element={<WelcomePage />} />
+          <Route path="/endInterview" element={<EndInterview />} />
+          <Route path="/apply/:company/:jobId" element={<UploadCv />} />
+          <Route path="/updatehcaccount" element={<UpdateHCAccount />} />
+          <Route path="/jobopeningform" element={<JobOpeningForm />} />
+          <Route path="/jobopening" element={<JobOpenings />} />
+          <Route path="/viewcandidates" element={<ViewCandidates />} />
+          <Route path="/candidateinterview" element={<CandidateInterview />} />
+          <Route path="/equipmenttesting" element={<EquipmentTesting />} />
+          <Route path="/scheduleinterview" element={<ScheduleInterview />} />
+          <Route path="/loginSU" element={<LoginSU />} />
+          <Route path="/loginHC" element={<LoginHC />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
