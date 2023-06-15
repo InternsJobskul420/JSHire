@@ -21,9 +21,10 @@ server.use(cors());
 
 
 
+server.use('/uploads',express.static('uploads'))
 
 server.use('/api', require("./Routes/DisplayQuestions"));
-server.use('/api', require("./Routes/CreateHiringCompany"));
+// server.use('/api', require("./Routes/CreateHiringCompany"));
 server.use('/api', require("./Routes/DisplayHC"));
 server.use('/api', require("./Routes/loginSU"));
 server.use('/api', require("./Routes/JobOpenings"));

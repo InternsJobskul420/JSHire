@@ -62,6 +62,9 @@ const CandidateSchema = new Schema({
     profilePic: {
       type: String,
       required: true
+    },
+    interviewLink: {
+      type: String
     }
   });
 

@@ -46,7 +46,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/hiringcompanyform" element={<HiringCompnayForm />} />
           <Route path="/hiringcompany" element={<HiringCompany />} />
-          <Route path="/candidatewelcome" element={<WelcomePage />} />
+          <Route path="/candidatewelcome/:company/:candidateId" element={<WelcomePage />} />
           <Route path="/endInterview" element={<EndInterview />} />
           <Route path="/apply/:company/:jobId" element={<UploadCv />} />
           <Route path="/updatehcaccount" element={<UpdateHCAccount />} />

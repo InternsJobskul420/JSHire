@@ -1,12 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const connectDB = require('../db')
 const Candidate= require('../models/Candidates');
 const HC = require('../models/HiringCompany'); 
 const JO = require('../models/JobOpenings');
-const upload = require('../middleware/multer')
-connectDB();
+const multer = require('multer');
+const uploadMiddleware = require('../middleware/multer');
+// const upload = require('../middleware/multer');
+const uploads = multer({dest:'uploads/'})
+const path = require('path')
+
+
+
+
 router.post('/UploadCv',async(req,res)=>{
 
     let name = req.body.name;
@@ -53,15 +59,15 @@ router.post('/fetchcompanydata',async(req,res)=>{
 
     try {
         data = req.body
-        console.log(req.body)
+        // console.log(req.body)
         let details = await HC.findOne({companyName: data.name})
         let joDes = await JO.findOne({company: data.name, 'openings.jobId': data.jobId },{ 'openings.$': 1 })
         // console.log(joDes)
         // console.log(joDes.openings[0])
         let jobdetails = joDes.openings[0]
-        console.log(jobdetails)
-        console.log(jobdetails.jobDesc)
-        console.log(jobdetails.basicQualif)
+        // console.log(jobdetails)
+        // console.log(jobdetails.jobDesc)
+        // console.log(jobdetails.basicQualif)
         
         if(details && joDes){
             res.json({
@@ -86,5 +92,133 @@ router.post('/fetchcompanydata',async(req,res)=>{
    
 
 })
+
+
+
+router.post('/candidateupload',uploadMiddleware.fields([{name:'cv'},{name:'profile'}]),async(req,res)=>{
+    const files = req.files;
+    const cvFile = req.files['cv'][0];
+    // const profile = req.files['profile'][0];
+    const data = req.body
+    // console.log(files)
+    // console.log(req.files)
+    // console.log(req.files['cv'])
+    // console.log(req.files['profile'][0])
+    console.log(cvFile)
+    // console.log(profile)
+    console.log(data)
+    console.log(data.company)
+
+    let companyId = await Candidate.findOne({company: data.company})
+    if(companyId === null){
+
+       await Candidate.create({
+        company : data.company,
+        openings: [
+            {
+                jobRole: data.jobRole,
+                link: data.link,
+                candidates: [{
+                    name: data.name,
+                    email: data.email,
+                    collegeName: data.collegeName,
+                    cv: req.files['cv'][0].path,
+                    profilePic: req.files['profile'][0].path,
+                    interviewLink:null
+                }]
+            }
+        ]
+       })
+
+       res.json({
+        success:true
+      })
+
+
+    }
+    
+    else {
+      // If the company already exists, check if the link exists in the openings
+      let openingIndex = -1;
+      companyId.openings.forEach((opening, index) => {
+        if (opening.link === data.link) {
+          openingIndex = index;
+          return;
+        }
+      });
+
+      if (openingIndex !== -1) {
+        // If the link exists, push the candidate details to the existing link
+        companyId.openings[openingIndex].candidates.push({
+          name: data.name,
+          email: data.email,
+          collegeName: data.collegeName,
+          cv: cvFile.path,
+          profilePic: req.files['profile'][0].path,
+          interviewLink:null,
+        });
+
+        res.json({
+          success:true
+        })
+
+      } else {
+        // If the link doesn't exist, create a new link in the openings and add the candidate details
+        companyId.openings.push({
+          jobRole: data.jobRole,
+          link: data.link,
+          candidates: [
+            {
+              name: data.name,
+              email: data.email,
+              collegeName: data.collegeName,
+              cv: cvFile.path,
+              profilePic: req.files['profile'][0].path,
+              interviewLink:null,
+            },
+          ],
+        });
+
+        res.json({
+          success:true
+        })
+      }
+
+      await companyId.save(); // Save the updated company document
+    }
+
+
+})
+
+
+router.post('/appliedcandidates', async (req, res) => {
+  const { link } = req.body;
+  // console.log(link)
+
+  try {
+    const company = await Candidate.findOne({ 'openings.link': link });
+
+    if (company) {
+      const opening = company.openings.find((opening) => opening.link === link);
+      
+      if (opening) {
+        const candidates = opening.candidates;
+        res.json({ candidates });
+      } else {
+        res.json({ candidates: [] });
+      }
+    } else {
+      res.json({ candidates: [] });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
+
+
 
 module.exports= router;

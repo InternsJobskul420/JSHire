@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import styles from './OpeningCard.module.css';
 import { FaTrash, FaEye } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const OpeningCard = (props) => {
   
   const [activeCard, setActiveCard] = useState(null);
+  const navigate = useNavigate()
 
   // console.log(props.companyName)
 
@@ -17,6 +18,11 @@ export const OpeningCard = (props) => {
       setActiveCard(index);
     }
   };
+
+
+  const viewCandidates=()=>{
+    navigate('/viewcandidates',{state: {applicationLink :props.link, jobRole :props.jobRole, company:props.companyName}})
+  }
 
   // const handleRemoveCard = (index) => {
   //   const updatedJobData = [...jobData];
@@ -61,13 +67,16 @@ export const OpeningCard = (props) => {
                 {activeCard === props.index && (
                   <div className={styles.cardMenu}>
                     <span onClick={handleRemoveCard(props.jobId)}>
-                      <FaTrash className={styles.menuIcon} />
-                      Remove
-                    </span>
-                    <span>
+                  <FaTrash className={styles.menuIcon} />
+                  Remove
+                </span>
+                
+                    <span >
                       <FaEye className={styles.menuIcon} />
-                      View
+                      <div onClick={viewCandidates}>View</div>
+                      
                     </span>
+                    
                   </div>
                 )}
               </div>
