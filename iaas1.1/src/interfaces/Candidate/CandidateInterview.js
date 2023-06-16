@@ -1,13 +1,17 @@
 import React, { useRef } from 'react'
 import { useState, useEffect } from "react";
-
+import axios from 'axios'
 import styles from  './Candidate.module.css';
 import sampleimage from '../../assets/video.svg'
+import { useLocation } from 'react-router-dom';
 
 
 
 const CandidateInterview = () => {
 
+    const location = useLocation();
+    const {id,company} = location.state;
+    console.log(id,company);
     const candidatevideo = useRef();
     const noOfQuestions = 20;
     const columnContainer = [];
@@ -17,6 +21,8 @@ const CandidateInterview = () => {
     const [selectedQuestion, setSelectedQuestion] = useState(null);
     const [questionNumber, setQuestionNumber] = useState(1);
     const [questions, setQuestions] = useState(null);
+    const [showModal, setShowModal] = useState(true);
+  const [countdown, setCountdown] = useState(5);
     const [allQuestionsSet, setAllQuestionsSet] = useState(null);
     const [recordingStatus, setRecordingStatus] = useState(false);
     const [mediaRecorder, setMediaRecorder] = useState(null);
@@ -25,67 +31,119 @@ const CandidateInterview = () => {
     for (let i = 1; i <= noOfQuestions; i++) {
       columnContainer.push(i);
     }
+
+
+
+    const MyComponent = () => {
+     
+    
+      const renderButtons = () => {
+        const buttonsPerColumn = 10;
+        const buttonColumns = Math.ceil(questions.length / buttonsPerColumn);
+        const buttons = [];
+        
+    
+        for (let i = 0; i < buttonColumns; i++) {
+          const start = i * buttonsPerColumn;
+          const end = start + buttonsPerColumn;
+    
+          const columnButtons = questions.slice(start, end).map((question, index) => (
+            <button key={start + index} onClick={() => handleButtonClick(start + index)}>
+              {start + index + 1}
+            </button>
+          ));
+    
+          buttons.push(<div key={i}>{columnButtons}hello</div>);
+        }
+    
+        return buttons;
+      };
+    
+      const handleButtonClick = (questionIndex) => {
+        console.log(`Question ${questionIndex + 1}: ${questions[questionIndex]}`);
+      };
+    
+      return <div>{renderButtons()}</div>;
+    };
   
     const loadData = async () => {
-      let response = await fetch("http://localhost:80/api/displayQuestions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+
+
+      try {
+
+        if(id){
+          console.log("inside the displayQuestion endpoint")
+          let response = await axios.post("http://localhost:80/api/displayQuestions",{
+            id: id,
+            company:company
+            }, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+        
+            console.log(response.data);
+            setQuestions(response.data.questions)
+            // console.log(response[0][0].questions);
+            // console.log(response[0]);
+            // console.log(response[0][0].CategoryName);
+            // setQuestions(response[0]);
+            // console.log(response[0][0].questions);
+            // setSelectedQuestion(response[0][0].questions);
+        }
+       
   
-      response = await response.json();
-      // console.log(response[0][0].questions);
-      // console.log(response[0]);
-      // console.log(response[0][0].CategoryName);
-      setQuestions(response[0]);
-      console.log(response[0][0].questions);
-      // setSelectedQuestion(response[0][0].questions);
+        
+      } catch (error) {
+        
+      }
+
     };
   
     //----------filtering category-----------------//
   
-    let category = () => {
-      let q = [];
-      if (questions) {
-        console.log(questions.length);
+    // let category = () => {
+    //   let q = [];
+    //   if (questions) {
+    //     console.log(questions.length);
   
-        questions.map((data) => {
-          console.log(data.CategoryName);
-          if (data.CategoryName === categoryname) {
-            console.log("success");
-            q.push(data.questions);
-            // firstquestion= q[0][1]
-            console.log(q);
-            // console.log(firstquestion)
-            setSelectedQuestion(q[0][1]);
-            setQuestionNumber(1);
-            //write choosing random question code here
-          }
-        });
-      }
-      setAllQuestionsSet(q);
-    };
+    //     questions.map((data) => {
+    //       console.log(data.CategoryName);
+    //       if (data.CategoryName === categoryname) {
+    //         console.log("success");
+    //         q.push(data.questions);
+    //         // firstquestion= q[0][1]
+    //         console.log(q);
+    //         // console.log(firstquestion)
+    //         setSelectedQuestion(q[0][1]);
+    //         setQuestionNumber(1);
+    //         //write choosing random question code here
+    //       }
+    //     });
+    //   }
+    //   setAllQuestionsSet(q);
+    // };
   
     //----------getting questions-----------------//
   
-    let getQuestion = (questionIndex) => {
-      // console.log(allQuestionsSet[0])
-      if (allQuestionsSet && allQuestionsSet[0]) {
-        console.log(questionIndex);
-      Object.keys(allQuestionsSet[0]).map((Index) => {
-        if (questionIndex == Index) {
-          setSelectedQuestion(allQuestionsSet[0][Index]);
-          setQuestionNumber(Index);
-          startRecording();
-          // setTimeLeft(TimeLimit);
-          // setTimer(TimeLimit);
-          // setRecordingStatus(true);
-        }
-      });
-      }
+    // let getQuestion = (questionIndex) => {
+    //   // console.log(allQuestionsSet[0])
+    //   if (allQuestionsSet && allQuestionsSet[0]) {
+    //     console.log(questionIndex);
+    //   Object.keys(allQuestionsSet[0]).map((Index) => {
+    //     if (questionIndex == Index) {
+    //       setSelectedQuestion(allQuestionsSet[0][Index]);
+    //       setQuestionNumber(Index);
+    //       startRecording();
+    //       // setTimeLeft(TimeLimit);
+    //       // setTimer(TimeLimit);
+    //       // setRecordingStatus(true);
+    //     }
+    //   });
+    //   }
       
-    };
+    // };
   
     const nextQuestion = () => {
       
@@ -98,7 +156,8 @@ const CandidateInterview = () => {
       return slicedContainer.map((index) => {
         return (
           <div>
-            <button key={index} className={styles.question_number} onClick={() => getQuestion(index)}>
+            {/* <button key={index} className={styles.question_number} onClick={() => getQuestion(index)}> */}
+            <button key={index} className={styles.question_number} >
               {index}
             </button>
           </div>
@@ -140,14 +199,16 @@ const CandidateInterview = () => {
 
     useEffect(() => {
       loadData();
+
+      
       
     }, []);
   
-    useEffect(() => {
-      category();
-      // firstQuestion();
-      console.log(questions);
-    }, [questions]);
+    // useEffect(() => {
+    //   category();
+    //   // firstQuestion();
+    //   console.log(questions);
+    // }, [questions]);
   
     // useEffect(() => {
     //   if (timer && timeLeft >= 0) {
@@ -161,21 +222,27 @@ const CandidateInterview = () => {
     // }, [timer, timeLeft]);
   
     return (
+
+      <>
+      {questions?
       <div className={styles.container}>
-        <div className={styles.candidate_layout}>
-          <div className={styles.question_btn}>
-            <div>{showButtons(1, 10)}</div>
-            <div>{showButtons(11, 20)}</div>
-          </div>
-          <div className={styles.candidate_side}>
-            <div className={`${styles.questionHead} ${styles.candiCom}`}>Question {questionNumber}</div>
-            <div className={styles.questions}>{selectedQuestion}</div>
-            <div className={`${styles.equipBody} `}>
-          <video ref={candidatevideo} className={styles.candidate_video} autoPlay playsInline  ></video>
+      <div className={styles.candidate_layout}>
+        <div className={styles.question_btn}>
+          {/* <div>{showButtons(1, 10)}</div>
+          <div>{showButtons(11, 20)}</div> */}
+          <div>{MyComponent}</div>
         </div>
-          </div>
+        <div className={styles.candidate_side}>
+          <div className={`${styles.questionHead} ${styles.candiCom}`}>Question {questionNumber}</div>
+          <div className={styles.questions}>{selectedQuestion}</div>
+          <div className={`${styles.equipBody} `}>
+        <video ref={candidatevideo} className={styles.candidate_video} autoPlay playsInline  ></video>
+      </div>
         </div>
       </div>
+    </div>:"Loading the questions"}
+      
+      </>
     );
 }
 

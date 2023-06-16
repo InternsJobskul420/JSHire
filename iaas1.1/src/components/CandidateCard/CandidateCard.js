@@ -12,7 +12,7 @@ const CandidateCard = ({ name, college, imageUrl, id, jobRole,company, applicati
     // console.log(imageUrl)
     // const formattedImagePath = imageUrl.replace(/\\/g, '/');
     const navigate = useNavigate();
-    console.log(interviewLink);
+    // console.log(interviewLink);
     // console.log(formattedImagePath);
 
 

@@ -55,9 +55,9 @@ export const ViewCandidates = () => {
       <NavigationBar />
       <h1 className={styles.formHeading}>Candidate Profiles</h1>
       <div className={styles['display-cards']}>
-        {candidateApplied ?candidateApplied.map((candidate, index)=>{
+        {candidateApplied ?candidateApplied.map((candidate)=>{
 return(
-  <><CandidateCard key={index} name={candidate.name} college={candidate.collegeName}  id={candidate._id} jobRole={jobRole}  applicationLink={applicationLink} company={company} interviewLink={candidate.interviewLink} /></>
+  <><CandidateCard key={candidate._id} name={candidate.name} college={candidate.collegeName}  id={candidate._id} jobRole={jobRole}  applicationLink={applicationLink} company={company} interviewLink={candidate.interviewLink} /></>
 )
         })
       :"No candidates have applied "}

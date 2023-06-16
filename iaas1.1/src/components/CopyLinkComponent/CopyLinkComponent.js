@@ -11,7 +11,7 @@ function CopyLinkComponent({ link }) {
       });
   };
 
-  console.log(link);
+//   console.log(link);
 
   return (
     <div  onClick={handleCopyLink}>

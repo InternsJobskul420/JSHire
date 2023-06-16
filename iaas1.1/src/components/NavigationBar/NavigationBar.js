@@ -23,17 +23,17 @@ const NavigationBar = () => {
         <div className={`${styles['nav-elements']} ${showNavbar && styles.active}`}>
           <ul>
             <li>
-              <NavLink to="/" activeClassName={styles.active}>
+              <NavLink to="/"  activeclassname={styles.active}>
                 Welcome, Admin
               </NavLink>
             </li>
             <li>
-              <NavLink to="/blog" activeClassName={styles.active}>
+              <NavLink to="/blog"  activeclassname={styles.active}>
                 Change Password
               </NavLink>
             </li>
             <li>
-              <NavLink to="/projects" activeClassName={styles.active}>
+              <NavLink to="/projects"  activeclassname={styles.active}>
                 Logout 
               </NavLink>
             </li>

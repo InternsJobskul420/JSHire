@@ -2,16 +2,21 @@ import React, { useEffect, useState, useRef } from "react";
 import sampleimage from "../../assets/video.svg";
 import styles from "./Candidate.module.css";
 import CandidateLayout from "../../components/CandidateLayout/CandidateLayout";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const EquipmentTesting = () => {
+
+  const location = useLocation();
+  const {id,company} = location.state;
+  console.log(id,company); 
+  console.log("hello");
   const videoRef = useRef();
   const [hasAccess, setHasAccess] = useState(false);
   const [audioLevel, setAudioLevel] = useState(0);
   const navigate = useNavigate();
 
   const startInterview = () => {
-    navigate("../candidateinterview");
+    navigate("../candidateinterview",{state:{id:id, company:company}});
   };
 
   useEffect(() => {
@@ -24,28 +29,43 @@ const EquipmentTesting = () => {
         videoRef.current.srcObject = stream;
 
         // Microphone testing
-        const audioContext = new AudioContext();
-        const audioSource = audioContext.createMediaStreamSource(stream);
-        const analyser = audioContext.createAnalyser();
-        analyser.fftSize = 32;
-        const bufferLength = analyser.frequencyBinCount;
-        const dataArray = new Uint8Array(bufferLength);
+        // const audioContext = new AudioContext();
+        // const audioSource = audioContext.createMediaStreamSource(stream);
+        // const analyser = audioContext.createAnalyser();
+        // analyser.fftSize = 32;
+        // const bufferLength = analyser.frequencyBinCount;
+        // const dataArray = new Uint8Array(bufferLength);
 
-        const getMicrophoneLevel = () => {
-          analyser.getByteFrequencyData(dataArray);
-          const total = dataArray.reduce((acc, value) => acc + value, 0);
-          const average = total / bufferLength;
-          setAudioLevel(average);
-        };
+        // const getMicrophoneLevel = () => {
+        //   analyser.getByteFrequencyData(dataArray);
+        //   const total = dataArray.reduce((acc, value) => acc + value, 0);
+        //   const average = total / bufferLength;
+        //   setAudioLevel(average);
+        // };
 
-        audioSource.connect(analyser);
-        const intervalId = setInterval(getMicrophoneLevel, 100);
-        return () => {
-          clearInterval(intervalId);
-          audioContext.close();
-        };
+        // audioSource.connect(analyser);
+        // const intervalId = setInterval(getMicrophoneLevel, 100);
+        // return () => {
+        //   clearInterval(intervalId);
+        //   audioContext.close();
+        // };
       } catch (error) {
-        console.error("Error accessing media devices:", error);
+        if (error.name === "NotAllowedError") {
+          // User blocked camera or microphone access
+          // Prompt the user to enable access for camera and microphone
+          const cameraPermission = await navigator.permissions.query({ name: "camera" });
+          const microphonePermission = await navigator.permissions.query({ name: "microphone" });
+    
+          if (cameraPermission.state === "prompt" || microphonePermission.state === "prompt") {
+            await navigator.mediaDevices.getUserMedia(constraints);
+          } else {
+            console.log("Camera or microphone access blocked by the user");
+          }
+        } else {
+          console.error("Error accessing media devices:", error);
+        }
+        
+
       }
     };
 
@@ -78,7 +98,7 @@ const EquipmentTesting = () => {
             </div>
             {hasAccess && (
               <div className={styles.equipBody}>
-                Microphone Level: {audioLevel}
+              
               </div>
             )}
           </div>
