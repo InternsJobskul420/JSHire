@@ -66,7 +66,7 @@ const fileFilter = (req, file,cb)=>{
 }
 
 
-const uploadMiddleware = multer({storage, fileFilter})
+const uploadMiddleware = multer({storage, fileFilter});
 // const uploadMiddleware = multer({
 //     storage: multer.diskStorage({
 //         destination: function(req,file,cb){

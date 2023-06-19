@@ -6,10 +6,11 @@ const Candidate = require('../models/Candidates');
 
 const candidateDetail = async (id, company) => {
     try {
+      let jobRole = null;
+      let candidate = null;
       let companyDetails = await Candidate.findOne({ company: company });
       if (companyDetails) {
-        let jobRole = null;
-        let candidate = null;
+        
   
         // Find the matching candidate and job role
         companyDetails.openings.forEach((opening) => {
@@ -20,24 +21,16 @@ const candidateDetail = async (id, company) => {
           }
         });
 
-        console.log(candidate);
+        // console.log(candidate);
+        // console.log(jobRole);
   
-        if (candidate) {
-            // console.log(jobRole)
-            return({
-                candidate:candidate,
-                jobRole: jobRole
-            })
-
-          
-        } else {
-            
-          console.log("Candidate not found");
-          return null;
-          
-        }
+        return({
+          candidate:candidate,
+          jobRole: jobRole
+      })
       } else {
         console.log("Company not found");
+        return null;
        
 
       }
@@ -52,7 +45,7 @@ const getQuestions =async(jobRole)=>{
 
         let questions = null;
 
-        let fetchQuestions = await mongoose.connection.db.collection('PrototypeQuestions').find({}).toArray();
+        let fetchQuestions = await mongoose.connection.db.collection('questionsData').find({}).toArray();
         // console.log(fetchQuestions);
         fetchQuestions.forEach((data)=>{
             // console.log(data.CategoryName);
@@ -63,7 +56,7 @@ const getQuestions =async(jobRole)=>{
             }
         })
 
-        console.log("questions     ",questions);
+        // console.log("questions     ",questions);
         if (questions){
             // console.log(questions);
             return (questions);
@@ -105,12 +98,15 @@ router.post('/displayQuestions', async(req,res)=>{
         // res.send([global.questions])
         // console.log(req.body);
         let data = req.body;
+        // console.log(req.body);
        let response = await candidateDetail(data.id, data.company);
-    //    console.log(response);
+      //  console.log(response.jobRole);
        
         // console.log("calling here 2 times");
        
         let questions = await getQuestions(response.jobRole);
+        // let test = questions;
+        // console.log(test);
          
         //  console.log(questions);
        

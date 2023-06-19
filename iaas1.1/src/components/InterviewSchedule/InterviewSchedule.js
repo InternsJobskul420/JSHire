@@ -34,9 +34,9 @@ export const InterviewSchedule = (props) => {
       console.log(response.data);
 
       if (response.data.success) {
-        console.log(response.data.candidate)
+        console.log(response.data.candidateLink)
         alert('Interview scheduled successfully');
-        navigate('/viewcandidates'); // Navigate to a success page or any other desired page
+        navigate('/viewcandidates',{state:{applicationLink:props.applicationLink, jobRole:props.jobRole,company:props.company}}); // Navigate to a success page or any other desired page
       }
     } catch (error) {
       console.error('Error:', error);

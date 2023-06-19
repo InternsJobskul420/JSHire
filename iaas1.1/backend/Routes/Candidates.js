@@ -13,45 +13,45 @@ const path = require('path')
 
 
 
-router.post('/UploadCv',async(req,res)=>{
+// router.post('/UploadCv',async(req,res)=>{
 
-    let name = req.body.name;
-    let email = req.body.email;
-    let collegeName = req.body.collegeName;
-    console.log("reading body data")
-    console.log(name);
-    console.log(email);
-    console.log(collegeName);
+//     let name = req.body.name;
+//     let email = req.body.email;
+//     let collegeName = req.body.collegeName;
+//     console.log("reading body data")
+//     console.log(name);
+//     console.log(email);
+//     console.log(collegeName);
 
-    try {
-        console.log("inside try");
-        let fetchedSUDetails = await mongoose.connection.db.collection('Candidates').find({}).toArray();
-        // console.log(fetchedSUDetails[0])
-        // console.log(fetchedSUDetails[0].username)
-        // console.log(fetchedSUDetails[0].password)
-        let details = fetchedSUDetails[0]
-        if(details.username === username && details.password === password ){
-            console.log("matched username")
-            res.send({success:true})
-        }
+//     try {
+//         console.log("inside try");
+//         let fetchedSUDetails = await mongoose.connection.db.collection('Candidates').find({}).toArray();
+//         // console.log(fetchedSUDetails[0])
+//         // console.log(fetchedSUDetails[0].username)
+//         // console.log(fetchedSUDetails[0].password)
+//         let details = fetchedSUDetails[0]
+//         if(details.username === username && details.password === password ){
+//             console.log("matched username")
+//             res.send({success:true})
+//         }
 
-        else{
-            res.send({
-                success:false
-            })
-        }
+//         else{
+//             res.send({
+//                 success:false
+//             })
+//         }
 
         
        
 
-        // if(sudata.username === username && sudata.password === password )
-        // return res.send("authentication successful")
-    } catch (error) {
-        res.send("error in connection");
-        console.log(error)
-    } 
+//         // if(sudata.username === username && sudata.password === password )
+//         // return res.send("authentication successful")
+//     } catch (error) {
+//         res.send("error in connection");
+//         console.log(error)
+//     } 
 
-});
+// });
 
 
 
@@ -95,7 +95,7 @@ router.post('/fetchcompanydata',async(req,res)=>{
 
 
 
-router.post('/candidateupload',uploadMiddleware.fields([{name:'cv'},{name:'profile'}]),async(req,res)=>{
+router.post('/candidateupload',uploadMiddleware.fields([{name:'cv'},{name:'profilePic'}]),async(req,res)=>{
     const files = req.files;
     const cvFile = req.files['cv'][0];
     // const profile = req.files['profile'][0];
@@ -104,7 +104,7 @@ router.post('/candidateupload',uploadMiddleware.fields([{name:'cv'},{name:'profi
     // console.log(req.files)
     // console.log(req.files['cv'])
     // console.log(req.files['profile'][0])
-    console.log(cvFile)
+    // console.log(cvFile)
     // console.log(profile)
     console.log(data)
     console.log(data.company)
@@ -123,7 +123,7 @@ router.post('/candidateupload',uploadMiddleware.fields([{name:'cv'},{name:'profi
                     email: data.email,
                     collegeName: data.collegeName,
                     cv: req.files['cv'][0].path,
-                    profilePic: req.files['profile'][0].path,
+                    profilePic: req.files['profilePic'][0].path,
                     interviewLink:null
                 }]
             }
@@ -173,7 +173,7 @@ router.post('/candidateupload',uploadMiddleware.fields([{name:'cv'},{name:'profi
               email: data.email,
               collegeName: data.collegeName,
               cv: cvFile.path,
-              profilePic: req.files['profile'][0].path,
+              profilePic: req.files['profilePic'][0].path,
               interviewLink:null,
             },
           ],
