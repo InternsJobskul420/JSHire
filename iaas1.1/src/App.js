@@ -18,6 +18,7 @@ import LoginSU from './interfaces/Admin/SuperUser/LoginSU';
 import LoginHC from './interfaces/Admin/HiringCompany/LoginHC';
 import { UploadCv } from './interfaces/Candidate/UploadCv';
 import { ScheduleInterview } from './interfaces/Admin/HiringCompany/ScheduleInterview';
+import SpeechToText from './interfaces/Candidate/SpeechToText';
 
 function App() {
   const routes = [
@@ -57,6 +58,7 @@ function App() {
           <Route path="/equipmenttesting" element={<EquipmentTesting />} />
           <Route path="/scheduleinterview" element={<ScheduleInterview />} />
           <Route path="/loginSU" element={<LoginSU />} />
+          <Route path="/speech" element={<SpeechToText/>} />
           <Route path="/loginHC" element={<LoginHC />} />
         </Routes>
       </div>
