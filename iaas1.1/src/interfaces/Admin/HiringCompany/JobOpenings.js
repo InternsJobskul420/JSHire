@@ -17,102 +17,102 @@ export const JobOpenings = () => {
   const location = useLocation();
   const [name, setName] = useState(location.state.companyName)
 
-  const fetchJobsList = async()=>{
+  const fetchJobsList = async () => {
 
 
     try {
-        console.log(name)
-        let response = await axios.post('http://localhost:80/api/displayjoblist',{
+      console.log(name)
+      let response = await axios.post('http://localhost:80/api/displayjoblist', {
         companyName: name
-      },{
-        headers:{
+      }, {
+        headers: {
           'Content-Type': 'application/json'
         }
       })
 
       // console.log(response.data.data.length)
       // console.log(name.length)
-     
 
-      if(response.data.data === null){
+
+      if (response.data.data === null) {
         setJobNo(1);
         console.log("no data found")
       }
 
-      if(response.data.data){
+      if (response.data.data) {
         console.log(response.data.jobs)
-        setJobNo(response.data.jobs+1)
+        setJobNo(response.data.jobs + 1)
         setJobOpenings(response.data.data)
-        
+
       }
 
-      
 
-      
-      
+
+
+
     } catch (error) {
 
       console.log("error encountered in fetching data");
-      
+
     }
-   
-}
 
-
-
-
-
-
-useEffect(()=>{
-
-
-  if(name){
-    fetchJobsList();
   }
-    
-  
-  
 
-},[])
+
+
+
+
+
+  useEffect(() => {
+
+
+    if (name) {
+      fetchJobsList();
+    }
+
+
+
+
+  }, [])
 
 
 
   return (
     <>
-    <NavigationBar/>
-    <BreadcrumbNav routes={[{ path: '/jobopening', label: 'Job Openings' }]} />
-    <h1 className={sty.formHeading}>Create Job Openings for {name}</h1>
-    {jobOpenings ?
-      jobOpenings.map((job, index)=>{
-        return(
-          <OpeningCard 
-          key={index}
-          companyName={name}
-          jobRole = {job.jobRole} 
-          jobId={job.jobId} 
-          NumOfOpenings = {job.NumOfOpenings}
-          link = {job.link}/>
-        )
-      })
-      // jobOpenings.map((details)=>{
-      //   return(<OpeningCard 
-      //     jobRole = {details.jobRole}  
-      //     jobId = {details._id}
-      //     NumOfOpenings = {details.NumOfOpenings}
-      //     basicQualif = {details.basicQualif}
-      //     />)
-      // })
+      <NavigationBar />
+      <BreadcrumbNav page={`Hiring Companies / ${name}`} />
+      <h1 className={sty.formHeading}>Create Job Openings for {name}</h1>
+      {jobOpenings ?
+        jobOpenings.map((job, index) => {
+          return (
+            <OpeningCard
+              key={index}
+              companyName={name}
+              jobRole={job.jobRole}
+              jobId={job.jobId}
+              NumOfOpenings={job.NumOfOpenings}
+              link={job.link} />
+          )
+        })
+        // jobOpenings.map((details)=>{
+        //   return(<OpeningCard 
+        //     jobRole = {details.jobRole}  
+        //     jobId = {details._id}
+        //     NumOfOpenings = {details.NumOfOpenings}
+        //     basicQualif = {details.basicQualif}
+        //     />)
+        // })
 
-      // jobOpenings.map((det, index)=>{
-      //   return(
-      //   <>
-      //   <OpeningCard index={index} jobRole={det.jobRole}  jobId={det._id} jobOpenings={det.NumOfOpenings}/>
-      //   </>
-      //   )
-      // })
-     :"Create a job opening"}
-   
-    <AddButton side="HC" companyName={name} jobNo={jobNo} />
+        // jobOpenings.map((det, index)=>{
+        //   return(
+        //   <>
+        //   <OpeningCard index={index} jobRole={det.jobRole}  jobId={det._id} jobOpenings={det.NumOfOpenings}/>
+        //   </>
+        //   )
+        // })
+        : "Create a job opening"}
+
+      <AddButton side="HC" companyName={name} jobNo={jobNo} />
     </>
   )
 }

@@ -35,9 +35,7 @@ export const HiringCompany = () => {
   return (
     <>
       <NavigationBar />
-      <BreadcrumbNav routes={[
-      { path: '/hiringcompany', label: 'Hiring Companies' }
-    ]} />
+      <BreadcrumbNav page={`Hiring Companies`} />
       <h1 className={styles.formHeading}>Create An Account</h1>
       <div className={styles['display-cards']}>
 
