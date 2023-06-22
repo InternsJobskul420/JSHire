@@ -18,7 +18,8 @@ import LoginSU from './interfaces/Admin/SuperUser/LoginSU';
 import LoginHC from './interfaces/Admin/HiringCompany/LoginHC';
 import { UploadCv } from './interfaces/Candidate/UploadCv';
 import { ScheduleInterview } from './interfaces/Admin/HiringCompany/ScheduleInterview';
-import SpeechToText from './interfaces/Candidate/SpeechToText';
+// import SpeechToText from './interfaces/Candidate/SpeechToText';
+// import RecordView from './interfaces/Candidate/RecordView';
 
 function App() {
   const routes = [
@@ -44,7 +45,7 @@ function App() {
       <div>
         <BreadcrumbNav routes={routes} />
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<LoginSU />} />
           <Route path="/hiringcompanyform" element={<HiringCompnayForm />} />
           <Route path="/hiringcompany" element={<HiringCompany />} />
           <Route path="/candidatewelcome/:company/:candidateId" element={<WelcomePage />} />
@@ -58,7 +59,7 @@ function App() {
           <Route path="/equipmenttesting" element={<EquipmentTesting />} />
           <Route path="/scheduleinterview" element={<ScheduleInterview />} />
           <Route path="/loginSU" element={<LoginSU />} />
-          <Route path="/speech" element={<SpeechToText/>} />
+          {/* <Route path="/speech" element={<RecordView/>} /> */}
           <Route path="/loginHC" element={<LoginHC />} />
         </Routes>
       </div>

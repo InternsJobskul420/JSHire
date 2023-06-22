@@ -15,7 +15,7 @@ router.post('/loginSU',async(req,res)=>{
     try {
         console.log("inside try");
         let fetchedSUDetails = await mongoose.connection.db.collection('SuperUserDB').find({}).toArray();
-        // console.log(fetchedSUDetails[0])
+        console.log(fetchedSUDetails[0])
         // console.log(fetchedSUDetails[0].username)
         // console.log(fetchedSUDetails[0].password)
         let details = fetchedSUDetails[0]

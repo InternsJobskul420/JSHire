@@ -79,13 +79,14 @@ const EquipmentTesting = () => {
           <div className={styles.videoContainer}>
             <div className={styles.equipBody}>Let's get you set up!</div>
             <div className={`${styles.equipBody}`}>
-              <video
+              {videoRef? <video
                 ref={videoRef}
                 className={styles.candidate_video}
                 autoPlay
                 playsInline
                 style={{ transform: "scaleX(-1)" }}
-              ></video>
+              ></video>: "Wait for the camera "}
+             
             </div>
             <div className={styles.equipBody}>Do a Webcam and Audio Test</div>
             <div className={styles.equipBody}>
