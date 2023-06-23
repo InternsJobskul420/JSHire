@@ -29,7 +29,7 @@ const CandidateInterview = () => {
   const TotalQuestions = 10;
   
 
-  navigate = useNavigate();
+  const navigate = useNavigate();
   const candidateVideo = useRef();
   const questionNumberRef = useRef(0);
   const transcriptedText = useRef([]);
