@@ -11,6 +11,10 @@ const EndInterview = () => {
   const [seconds, setSeconds] = useState(5);
   const [uploadMessage, setUploadMessage] = useState("Wait for a few seconds while we finish uploading your videos");
 
+  const location = useLocation();
+  const {urls} = location.state;
+  console.log(urls);
+
 
   useEffect(() => {
     if (seconds === 0) {
