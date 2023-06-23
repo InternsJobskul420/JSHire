@@ -12,8 +12,8 @@ const EndInterview = () => {
   const [uploadMessage, setUploadMessage] = useState("Wait for a few seconds while we finish uploading your videos");
 
   const location = useLocation();
-  const {urls} = location.state;
-  console.log(urls);
+  const {urls, transcriptedText} = location.state;
+  console.log(urls, transcriptedText);
 
 
   useEffect(() => {

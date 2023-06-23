@@ -24,7 +24,7 @@ const CandidateInterview = () => {
   let isRecording = false;
   const numberOfQuestions = 20;
   const buttonsPerColumn = 10;
-  const ansTime = 10;
+  const ansTime = 10000;
   const noOfColumns = Math.ceil(numberOfQuestions / buttonsPerColumn);
   const TotalQuestions = 5;
   
@@ -41,9 +41,10 @@ const CandidateInterview = () => {
   const [questions, setQuestions] = useState(null);
   const [isActive, setIsActive] = useState(true);
   const [isIntervalActive, setIsIntervalActive] = useState(true);
-  const [transcriptedtext, setTranscriptedText] = useState({});
-  const [quizTimer, setquizTimer] = useState(20);
+  // const [transcriptedtext, setTranscriptedText] = useState({});
+  const [quizTimer, setquizTimer] = useState(10);
   const [startTimer, setstartTimer] = useState(10);
+  const [startStopButtonActive, setStartStopButtonActive] = useState(false);
   // const [timer, setTimer] = useState(30);
   // const [isTime, setIstime] = useState(true);
   // const [recordedVideos, setRecordedVideos] = useState([]);
@@ -51,11 +52,12 @@ const CandidateInterview = () => {
 
   //------------react-speech-recognition variables-------------------------//
 
-  const { transcript,listening ,resetTranscript ,browserSupportsSpeechRecognition, isMicrophoneAvailable } = useSpeechRecognition({"1":""});
+  const { transcript,listening ,resetTranscript ,browserSupportsSpeechRecognition, isMicrophoneAvailable } = useSpeechRecognition({});
   const startListening = ()=> SpeechRecognition.startListening({ continuous: true, language: "en-IN" });
   const stopListening =()=> SpeechRecognition.stopListening();
   // const [timer, setTimer] = useState(30);
   const [intervalId, setIntervalId] = useState(null);
+  const [intervalId2, setIntervalId2] = useState(null);
   // console.log(number);
 
 
@@ -70,7 +72,9 @@ const CandidateInterview = () => {
 
   // console.log(timer);
 
-  console.log(videoUrls);
+  // console.log(videoUrls);
+  // console.log(transcript);
+  // console.log(transcriptedText);
 
 
 //----------formatting time ---------------------------//
@@ -84,28 +88,18 @@ const CandidateInterview = () => {
 
 
 
+
 const saveMedia =(url)=>{
 
   // Create a download link
-  console.log(questionNumberRef.current);
+  // console.log(questionNumberRef.current);
   const downloadLink = document.createElement('a');
   downloadLink.href = url;
   downloadLink.download = `video_${questionNumberRef.current}.webm`;
-  // downloadLink.click();
-  // videoUrls.current.push(url);
-  
-  console.log(videoUrls);
-  console.log(videoUrls.current);
+
   const prevQno = questionNumberRef.current - 1;
   let length = videoUrls.current.length;
-  console.log(length);
-  if(length>0){
-    console.log(questionNumberRef);
-    // console.log(storeVideoUrls.current[questionNumberRef.current]);
-    console.log(videoUrls.current[length-1]);
-  }
   
-  // console.log(storeVideoUrls.current[questionNumberRef-1])
 
   if(videoUrls.current[length-1] !== url){
     videoUrls.current = [...videoUrls.current, url];
@@ -113,7 +107,11 @@ const saveMedia =(url)=>{
     // storeVideoUrls.current[questionNumberRef] = url;
   }
   
-  console.log(downloadLink);
+  // console.log(downloadLink);
+
+    // console.log(transcript)
+    // transcriptedText.current = [...transcriptedText.current, transcript];
+    // console.log(transcriptedText)
   // console.log(storeVideoUrls.current);
   // Save the downloaded video URL
   // setRecordedVideos(prevVideos => [
@@ -125,24 +123,37 @@ const saveMedia =(url)=>{
 }
 
 
-// const quizTimerSet = ()=>{
+const saveTranscript = ()=>{
+  transcriptedText.current.push(transcript);
+  console.log("inside");
+  console.log(transcriptedText.current);
+  resetTranscript();
+}
 
+
+const startQuizztimer = ()=>{
+
+  const interval = setInterval(()=>{
+    setquizTimer((prev)=>prev -1);
+    setIntervalId2(interval)
+  },1000);
+
+
+
+  setTimeout(()=>{
+    // console.log("time");
+    clearInterval(interval);
+    setquizTimer(10);
+  },ansTime+1000);
   
-//   const intervalId = setInterval(() => {
-//     setquizTimer((prevTimer) => {
-//       if (prevTimer === 1) {
-//         setCount((prevCount) => prevCount + 1);
-//         return 30; // Reset the timer to 30 seconds
-//       }
-//       return prevTimer - 1;
-//     });
-//   }, 1000);
+}
 
-//   // Clean up the interval when the component unmounts
-//   return () => {
-//     clearInterval(intervalId);
-//   };
-// }
+
+const stopquizTimer = ()=>{
+ 
+  setquizTimer(10);
+  clearInterval(intervalId2);
+}
 
 
 let firstTimer = ()=>{
@@ -150,22 +161,21 @@ let firstTimer = ()=>{
   let isTime = true;
   
   if(isTime ){
-    console.log("enetr")
+    // console.log("enetr")
     interval = setInterval(() => {
       setstartTimer ((prev)=> prev-1);
       // setIstime(false);
       // console.log(timer);
-
-      setTimeout(()=>{
-        isTime = false;
-        console.log(isTime);
-        // setstartTimer(0);
-        clearInterval(interval);
-      },9000)
-
-      
   
     }, 1000);
+
+    setTimeout(()=>{
+      isTime = false;
+      // console.log(isTime);
+      setStartStopButtonActive(true);
+      // setstartTimer(0);
+      clearInterval(interval);
+    },10000)
 
 
 
@@ -259,22 +269,27 @@ let firstTimer = ()=>{
     const startInterval = () => {
      
       intervalId = setInterval(() => {
-        console.log(transcript);
+        // console.log(transcript);
         if (questions) {
-          if (questionNumberRef.current === (TotalQuestions+1)) {
+          if (questionNumberRef.current === (TotalQuestions)) {
               clearInterval(intervalId); // Stop the interval when nextQuestionNumber reaches 20
               stopInterval();
               stopListening();
               
-              navigate('/endInterview', {state: {urls: videoUrls}})
+              
+              navigate('/endInterview', {state: {urls: videoUrls, transcriptedText:transcriptedText}})
           } else {
             // console.log(questionNumberRef.current);
            
             questionNumberRef.current +=1;
             // console.log(isRecording);
          
-          if(questionNumberRef.current > 0)   
+          if(questionNumberRef.current > 0){
+            startQuizztimer();
             handleQuestionButtonClick(questionNumberRef.current);
+            startListening();
+          }   
+            
             if (!isRecording) {
               isRecording = true;
               startRecording();
@@ -292,11 +307,12 @@ let firstTimer = ()=>{
                 isRecording = false;
                 // console.log(isRecording);
                 stopRecording();
-                transcriptedText.current.push(transcript);
-                resetTranscript();
+                stopquizTimer();
+                // console.log("resetting")
+                saveTranscript();
               }
               
-            },10000)
+            },ansTime)
 
 
 
@@ -309,7 +325,7 @@ let firstTimer = ()=>{
             // startListening(); // Call startListening at the beginning of each 5-second interval
           }
         }
-      }, 11000);
+      }, (ansTime+1000));
 
     
     };
@@ -364,6 +380,7 @@ let firstTimer = ()=>{
         questionNumberRef.current +=1;
         startListening();
         startRecording();
+        startQuizztimer();
   
         // If the interval is active, immediately fetch the next question
         handleQuestionButtonClick(questionNumberRef.current);
@@ -371,6 +388,9 @@ let firstTimer = ()=>{
       if (isIntervalActive) {
        stopListening();
        stopRecording();
+       stopquizTimer();
+       resetTranscript();
+       saveTranscript();
       }
 
      
@@ -379,7 +399,8 @@ let firstTimer = ()=>{
     }
 
     if(questionNumberRef.current === TotalQuestions  && isIntervalActive ){
-      navigate('/endInterview', {state: {urls: videoUrls}})
+              navigate('/endInterview', {state: {urls: videoUrls, transcriptedText:transcriptedText}})
+            
     }
 
     
@@ -393,7 +414,7 @@ let firstTimer = ()=>{
     loadData();
     getAccess();
     startRecording();
-    startListening();
+    // startListening();
     firstTimer();
    
    
@@ -434,7 +455,7 @@ let firstTimer = ()=>{
               <div></div>
             </div>
             <div className={styles.candidate_side}>
-            {/* <p>Timer: {formatTime(quizTimer)} secs</p> */}
+            <p>Timer: {quizTimer} secs</p>
             {/* <p>{status}</p> */}
             
               <div className={`${styles.questionHead} ${styles.candiCom}` }>
@@ -449,19 +470,21 @@ let firstTimer = ()=>{
                 <video
                   ref={candidateVideo}
                   className={styles.candidate_video}
-                  audio ={false}
+                  audio ="false"
                   autoPlay
                   playsInline
                   style={{ transform: "scaleX(-1)" }}
                 ></video>
-                {mediaBlobUrl}
+                {/* {mediaBlobUrl} */}
                 {mediaBlobUrl ? saveMedia(mediaBlobUrl):""}
                 <div>{transcript}</div>
               </div>
               <div>
-                <button onClick={handleStopStartButtonClick}>
+
+                {startStopButtonActive?  <button onClick={handleStopStartButtonClick}>
                   {isIntervalActive ? "Stop" : "Start"}
-                </button>
+                </button>:""}
+               
                 <p>Microphone : {listening ? "on": "off"}</p>
               </div>
             </div>
