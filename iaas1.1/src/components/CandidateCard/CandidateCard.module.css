@@ -76,3 +76,12 @@
   justify-content: center;
   align-items: center;
 }
+
+.copyLink{
+  padding: 10px;
+  color: rgb(31, 27, 27);
+  /* border: solid 2px black; */
+  width: 50%;
+  
+  background-color: transparent;
+}

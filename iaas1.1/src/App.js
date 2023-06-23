@@ -18,6 +18,7 @@ import LoginSU from './interfaces/Admin/SuperUser/LoginSU';
 import LoginHC from './interfaces/Admin/HiringCompany/LoginHC';
 import { UploadCv } from './interfaces/Candidate/UploadCv';
 import { ScheduleInterview } from './interfaces/Admin/HiringCompany/ScheduleInterview';
+import Success from './components/Success/Success';
 // import SpeechToText from './interfaces/Candidate/SpeechToText';
 // import RecordView from './interfaces/Candidate/RecordView';
 
@@ -61,6 +62,7 @@ function App() {
           <Route path="/loginSU" element={<LoginSU />} />
           {/* <Route path="/speech" element={<RecordView/>} /> */}
           <Route path="/loginHC" element={<LoginHC />} />
+          <Route path="/success" element={<Success/>} />
         </Routes>
       </div>
     </Router>

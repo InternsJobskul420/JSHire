@@ -98,6 +98,7 @@ router.post('/fetchcompanydata',async(req,res)=>{
 router.post('/candidateupload',uploadMiddleware.fields([{name:'cv'},{name:'profilePic'}]),async(req,res)=>{
     const files = req.files;
     const cvFile = req.files['cv'][0];
+    const profilePic = req.files['profilePic'][0];
     // const profile = req.files['profile'][0];
     const data = req.body
     // console.log(files)
@@ -154,7 +155,7 @@ router.post('/candidateupload',uploadMiddleware.fields([{name:'cv'},{name:'profi
           email: data.email,
           collegeName: data.collegeName,
           cv: cvFile.path,
-          profilePic: req.files['profile'][0].path,
+          profilePic: profilePic.path,
           interviewLink:null,
         });
 
