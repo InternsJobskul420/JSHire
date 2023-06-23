@@ -7,7 +7,8 @@ import { useReactMediaRecorder } from 'react-media-recorder';
 
 import styles from "./Candidate.module.css";
 // import sampleimage from "../../assets/video.svg";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 
 const CandidateInterview = () => {
@@ -23,14 +24,15 @@ const CandidateInterview = () => {
   let isRecording = false;
   const numberOfQuestions = 20;
   const buttonsPerColumn = 10;
+  const ansTime = 10;
   const noOfColumns = Math.ceil(numberOfQuestions / buttonsPerColumn);
-  const TotalQuestions = 3;
+  const TotalQuestions = 10;
+  
 
-
+  navigate = useNavigate();
   const candidateVideo = useRef();
   const questionNumberRef = useRef(0);
-  // const videoUrls= useRef({});
-  // const storeVideoUrls = useRef({});
+  const transcriptedText = useRef([]);
   const url = useRef();
   const videoUrls = useRef([])
 
@@ -40,7 +42,10 @@ const CandidateInterview = () => {
   const [isActive, setIsActive] = useState(true);
   const [isIntervalActive, setIsIntervalActive] = useState(true);
   const [transcriptedtext, setTranscriptedText] = useState({});
-  const [timer, setTimer] = useState(30);
+  const [quizTimer, setquizTimer] = useState(20);
+  const [startTimer, setstartTimer] = useState(10);
+  // const [timer, setTimer] = useState(30);
+  // const [isTime, setIstime] = useState(true);
   // const [recordedVideos, setRecordedVideos] = useState([]);
 
 
@@ -63,7 +68,7 @@ const CandidateInterview = () => {
       // console.log(transcriptedtext);
       // console.log(recordedVideos);
 
-      
+  // console.log(timer);
 
 
 //----------formatting time ---------------------------//
@@ -73,6 +78,8 @@ const CandidateInterview = () => {
     const seconds = (time % 60).toString().padStart(2, '0');
     return `${minutes}:${seconds}`;
   };
+
+
 
 
 const saveMedia =(url)=>{
@@ -114,6 +121,66 @@ const saveMedia =(url)=>{
 
 
 }
+
+
+// const quizTimerSet = ()=>{
+
+  
+//   const intervalId = setInterval(() => {
+//     setquizTimer((prevTimer) => {
+//       if (prevTimer === 1) {
+//         setCount((prevCount) => prevCount + 1);
+//         return 30; // Reset the timer to 30 seconds
+//       }
+//       return prevTimer - 1;
+//     });
+//   }, 1000);
+
+//   // Clean up the interval when the component unmounts
+//   return () => {
+//     clearInterval(intervalId);
+//   };
+// }
+
+
+let firstTimer = ()=>{
+  let interval = null;
+  let isTime = true;
+  
+  if(isTime ){
+    console.log("enetr")
+    interval = setInterval(() => {
+      setstartTimer ((prev)=> prev-1);
+      // setIstime(false);
+      // console.log(timer);
+
+      setTimeout(()=>{
+        isTime = false;
+        console.log(isTime);
+        // setstartTimer(0);
+        clearInterval(interval);
+      },9000)
+
+      
+  
+    }, 1000);
+
+
+
+  }
+
+  else{
+    clearInterval(interval);
+  }
+  
+
+  return()=>{
+    clearInterval(interval);
+  }
+
+ 
+  
+}
   
 
  //-------------getting access to microphone, browser and camera-----------------// 
@@ -130,7 +197,7 @@ const saveMedia =(url)=>{
       }
 
       stream = await navigator.mediaDevices.getUserMedia({
-        audio: true,
+        audio: false,
         video: true,
       });
 
@@ -196,6 +263,8 @@ const saveMedia =(url)=>{
               clearInterval(intervalId); // Stop the interval when nextQuestionNumber reaches 20
               stopInterval();
               stopListening();
+              
+              navigate('/endInterview')
           } else {
             // console.log(questionNumberRef.current);
            
@@ -221,6 +290,7 @@ const saveMedia =(url)=>{
                 isRecording = false;
                 // console.log(isRecording);
                 stopRecording();
+                transcriptedText.current.push(transcript);
                 resetTranscript();
               }
               
@@ -316,6 +386,7 @@ const saveMedia =(url)=>{
     getAccess();
     startRecording();
     startListening();
+    firstTimer();
    
    
      
@@ -355,12 +426,12 @@ const saveMedia =(url)=>{
               <div></div>
             </div>
             <div className={styles.candidate_side}>
-            <p>Timer: {formatTime(timer)} secs</p>
+            {/* <p>Timer: {formatTime(quizTimer)} secs</p> */}
             {/* <p>{status}</p> */}
             
               <div className={`${styles.questionHead} ${styles.candiCom}` }>
               {/* Question {questionNumberRef.current} */}
-               {questionNumberRef.current>0? <> Question {questionNumberRef.current}</>: <>Your quiz starts in </> }
+               {questionNumberRef.current>0? <> Question {questionNumberRef.current}</>: <>Your quiz starts in {startTimer}</> }
               </div>
               <div className={styles.questions}>{questionNumberRef.current > 0 ? selectedQuestion : ""}</div>
               <div className={`${styles.equipBody} `}>
@@ -370,12 +441,13 @@ const saveMedia =(url)=>{
                 <video
                   ref={candidateVideo}
                   className={styles.candidate_video}
+                  audio ={false}
                   autoPlay
                   playsInline
                   style={{ transform: "scaleX(-1)" }}
                 ></video>
                 {/* {mediaBlobUrl} */}
-                {mediaBlobUrl ? saveMedia(mediaBlobUrl):"saving Media"}
+                {mediaBlobUrl ? saveMedia(mediaBlobUrl):""}
                 <div>{transcript}</div>
               </div>
               <div>
