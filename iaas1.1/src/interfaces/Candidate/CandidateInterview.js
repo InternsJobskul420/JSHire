@@ -26,7 +26,7 @@ const CandidateInterview = () => {
   const buttonsPerColumn = 10;
   const ansTime = 10;
   const noOfColumns = Math.ceil(numberOfQuestions / buttonsPerColumn);
-  const TotalQuestions = 10;
+  const TotalQuestions = 5;
   
 
   const navigate = useNavigate();
@@ -69,6 +69,8 @@ const CandidateInterview = () => {
       // console.log(recordedVideos);
 
   // console.log(timer);
+
+  console.log(videoUrls);
 
 
 //----------formatting time ---------------------------//
@@ -264,7 +266,7 @@ let firstTimer = ()=>{
               stopInterval();
               stopListening();
               
-              navigate('/endInterview')
+              navigate('/endInterview', {state: {urls: videoUrls}})
           } else {
             // console.log(questionNumberRef.current);
            
@@ -370,8 +372,14 @@ let firstTimer = ()=>{
        stopListening();
        stopRecording();
       }
+
+     
       setIsIntervalActive(!isIntervalActive);
 
+    }
+
+    if(questionNumberRef.current === TotalQuestions  && isIntervalActive ){
+      navigate('/endInterview', {state: {urls: videoUrls}})
     }
 
     
@@ -446,7 +454,7 @@ let firstTimer = ()=>{
                   playsInline
                   style={{ transform: "scaleX(-1)" }}
                 ></video>
-                {/* {mediaBlobUrl} */}
+                {mediaBlobUrl}
                 {mediaBlobUrl ? saveMedia(mediaBlobUrl):""}
                 <div>{transcript}</div>
               </div>
