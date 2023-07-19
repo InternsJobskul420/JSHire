@@ -13,45 +13,7 @@ const path = require('path')
 
 
 
-// router.post('/UploadCv',async(req,res)=>{
 
-//     let name = req.body.name;
-//     let email = req.body.email;
-//     let collegeName = req.body.collegeName;
-//     console.log("reading body data")
-//     console.log(name);
-//     console.log(email);
-//     console.log(collegeName);
-
-//     try {
-//         console.log("inside try");
-//         let fetchedSUDetails = await mongoose.connection.db.collection('Candidates').find({}).toArray();
-//         // console.log(fetchedSUDetails[0])
-//         // console.log(fetchedSUDetails[0].username)
-//         // console.log(fetchedSUDetails[0].password)
-//         let details = fetchedSUDetails[0]
-//         if(details.username === username && details.password === password ){
-//             console.log("matched username")
-//             res.send({success:true})
-//         }
-
-//         else{
-//             res.send({
-//                 success:false
-//             })
-//         }
-
-        
-       
-
-//         // if(sudata.username === username && sudata.password === password )
-//         // return res.send("authentication successful")
-//     } catch (error) {
-//         res.send("error in connection");
-//         console.log(error)
-//     } 
-
-// });
 
 
 
@@ -59,10 +21,10 @@ router.post('/fetchcompanydata',async(req,res)=>{
 
     try {
         data = req.body
-        // console.log(req.body)
+        console.log(req.body)
         let details = await HC.findOne({companyName: data.name})
         let joDes = await JO.findOne({company: data.name, 'openings.jobId': data.jobId },{ 'openings.$': 1 })
-        // console.log(joDes)
+        console.log(joDes)
         // console.log(joDes.openings[0])
         let jobdetails = joDes.openings[0]
         // console.log(jobdetails)
@@ -101,6 +63,8 @@ router.post('/candidateupload',uploadMiddleware.fields([{name:'cv'},{name:'profi
     const profilePic = req.files['profilePic'][0];
     // const profile = req.files['profile'][0];
     const data = req.body
+
+    console.log(data.link);
     // console.log(files)
     // console.log(req.files)
     // console.log(req.files['cv'])
@@ -194,11 +158,11 @@ router.post('/candidateupload',uploadMiddleware.fields([{name:'cv'},{name:'profi
 
 router.post('/appliedcandidates', async (req, res) => {
   const { link } = req.body;
-  // console.log(link)
+  console.log(link)
 
   try {
     const company = await Candidate.findOne({ 'openings.link': link });
-
+    console.log(company);
     if (company) {
       const opening = company.openings.find((opening) => opening.link === link);
       

@@ -12,6 +12,7 @@ export const ViewCandidates = () => {
   const navigate = useNavigate();
   const address = "http://localhost:80/api"
   const {jobRole, company, applicationLink} = location.state;
+  console.log(applicationLink);
   const [candidateApplied, setAppliedCandidate]= useState(null);
 
   // console.log(applicationLink);

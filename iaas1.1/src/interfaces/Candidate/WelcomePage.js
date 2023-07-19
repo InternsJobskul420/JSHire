@@ -6,13 +6,19 @@ import CandidateLayout from "../../components/CandidateLayout/CandidateLayout";
 
 const WelcomePage = () => {
   const currentUrl = window.location.href;
-  // console.log(currentUrl);
+  console.log(currentUrl);
   const url = new URL(currentUrl);
 const candidateId = url.pathname.split("/")[3];
-const company = url.pathname.split("/")[2];
-console.log(candidateId);
-console.log(company);
-  
+let company = url.pathname.split("/")[2];
+// console.log(candidateId);
+// console.log(company);
+
+if(company.includes('%')){
+  company = company.replace(/%/g, ' ')
+  company = company.replace(/20/g, '');
+}
+// console.log(company);
+
   const heading = "You've got this!";
   const description =
     "Believe in yourself and your abilities. Remember to present your qualifications, skills, and experiences with clarity and confidence. All the best.";

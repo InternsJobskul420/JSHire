@@ -16,6 +16,7 @@ export const JobOpenings = () => {
 
   const location = useLocation();
   const [name, setName] = useState(location.state.companyName)
+  console.log(name);
 
   const fetchJobsList = async () => {
 

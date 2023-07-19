@@ -9,7 +9,9 @@ import styles from "./Candidate.module.css";
 // import sampleimage from "../../assets/video.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import { stream } from "./EquipmentTesting";
 
+console.log(stream);
 
 const CandidateInterview = () => {
 
@@ -20,8 +22,9 @@ const CandidateInterview = () => {
 
   const location = useLocation();
   const { id, company } = location.state;
-  let stream;
+  // let stream;
   let isRecording = false;
+  let ans = "";
   const numberOfQuestions = 20;
   const buttonsPerColumn = 10;
   const ansTime = 10000;
@@ -34,6 +37,7 @@ const CandidateInterview = () => {
   const questionNumberRef = useRef(0);
   const transcriptedText = useRef([]);
   const url = useRef();
+  const testVideo = useRef();
   const videoUrls = useRef([])
 
   //------------useState variables-------------------------//
@@ -87,6 +91,11 @@ const CandidateInterview = () => {
 
 
 
+  const options = {
+    audio:false,
+    video: true,
+    mimeType: 'video/mp4', // Specify the desired media type
+  };
 
 
 const saveMedia =(url)=>{
@@ -123,11 +132,13 @@ const saveMedia =(url)=>{
 }
 
 
-const saveTranscript = ()=>{
-  transcriptedText.current.push(transcript);
+const saveTranscript = (transcript)=>{
+  console.log(transcript);
+  ans = transcript;
+  // transcriptedText.current.push(transcript);
   console.log("inside");
-  console.log(transcriptedText.current);
-  resetTranscript();
+  // console.log(transcriptedText.current);
+  // resetTranscript();
 }
 
 
@@ -208,12 +219,23 @@ let firstTimer = ()=>{
         console.log("microphone not enabled")
       }
 
-      stream = await navigator.mediaDevices.getUserMedia({
+      const stream2 = await navigator.mediaDevices.getUserMedia({
         audio: false,
         video: true,
       });
 
-      candidateVideo.current.srcObject = stream;
+      console.log(stream);
+      console.log(stream2);
+
+      if(stream2){
+        console.log("assigning stream")
+        console.log(candidateVideo.current)
+        console.log(candidateVideo.current.srcObject);
+        // candidateVideo.current.srcObject = stream2;
+      }
+      
+     
+      // candidateVideo.current.srcObject = stream;
       // console.log(stream);
     } catch (error) {
       console.log("error in fetching video");
@@ -292,7 +314,7 @@ let firstTimer = ()=>{
             
             if (!isRecording) {
               isRecording = true;
-              startRecording();
+              startRecording(options);
 
              
             
@@ -308,6 +330,7 @@ let firstTimer = ()=>{
                 // console.log(isRecording);
                 stopRecording();
                 stopquizTimer();
+                resetTranscript();
                 // console.log("resetting")
                 saveTranscript();
               }
@@ -354,7 +377,7 @@ let firstTimer = ()=>{
      
       clearInterval(intervalId); // Clear the interval when the component unmounts
     };
-  }, [questions, isIntervalActive]);
+  }, [questions, isIntervalActive, stream]);
 
 
 
@@ -470,14 +493,14 @@ let firstTimer = ()=>{
                 <video
                   ref={candidateVideo}
                   className={styles.candidate_video}
-                  audio ="false"
+                  // audio ="false"
                   autoPlay
                   playsInline
                   style={{ transform: "scaleX(-1)" }}
                 ></video>
                 {/* {mediaBlobUrl} */}
                 {mediaBlobUrl ? saveMedia(mediaBlobUrl):""}
-                <div>{transcript}</div>
+                <div>{transcript}{transcript ? saveTranscript(transcript) : " "}</div>
               </div>
               <div>
 

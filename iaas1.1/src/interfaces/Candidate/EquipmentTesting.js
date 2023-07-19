@@ -4,6 +4,8 @@ import styles from "./Candidate.module.css";
 import CandidateLayout from "../../components/CandidateLayout/CandidateLayout";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
+let stream;
+
 const EquipmentTesting = () => {
 
   const location = useLocation();
@@ -11,6 +13,7 @@ const EquipmentTesting = () => {
   console.log(id,company); 
   console.log("hello");
   const videoRef = useRef();
+
   const [hasAccess, setHasAccess] = useState(false);
   const [audioLevel, setAudioLevel] = useState(0);
   const navigate = useNavigate();
@@ -19,14 +22,33 @@ const EquipmentTesting = () => {
     navigate("../candidateinterview",{state:{id:id, company:company}});
   };
 
+  const startMediaStream = async (audio = true) => {
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: true, audio });
+      setHasAccess(true);
+      console.log(videoRef.current);
+      console.log(videoRef.current.srcObject);
+      videoRef.current.srcObject = stream;
+    } catch (error) {
+      console.error('Error accessing camera and microphone:', error);
+    }
+  };
+
+
+
+
   useEffect(() => {
     const constraints = { audio: true, video: true };
 
     const getAccess = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia(constraints);
-        setHasAccess(true);
-        videoRef.current.srcObject = stream;
+        startMediaStream();
+
+        return () => {
+          stream.getTracks().forEach((track) => {
+            track.stop();
+          });
+        };
 
         // Microphone testing
         // const audioContext = new AudioContext();
@@ -109,4 +131,5 @@ const EquipmentTesting = () => {
   );
 };
 
+export {stream};
 export default EquipmentTesting;

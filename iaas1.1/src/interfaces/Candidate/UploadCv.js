@@ -9,11 +9,24 @@ export const UploadCv = () => {
   const [jobId, setJobId] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [jobDetails, setJobDetails] = useState({});
+  const [subActive, setsubActive] = useState(true);
+  const [message, setMessage] = useState("");
 
   let navigate = useNavigate();
-  const currentUrl = window.location.href;
+  let currentUrl = window.location.href;
+  console.log(currentUrl)
+  if (currentUrl.includes('%')){
+    currentUrl = currentUrl.replace(/%/g, ' ');
+    currentUrl = currentUrl.replace(/20/g, '');
+    // console.log(Id)
+  }
+  // currentUrl = currentUrl.toString();
+  console.log(currentUrl)
+  const pdfMaxSizeInBytes = 2 * 1024 * 1024; // 10MB
   // console.log(currentUrl);
   // console.log(credentialsStd);
+
+ 
 
   const extractJobIdAndCompanyName = (url) => {
     const parts = url.split("/");
@@ -29,16 +42,23 @@ export const UploadCv = () => {
     try {
       console.log("inside handle submit");
 
+ 
       const formData = new FormData();
       formData.append("name", credentialsStd.name);
       formData.append("email", credentialsStd.email);
       formData.append("collegeName", credentialsStd.college);
       formData.append("cv", credentialsStd.cv);
       formData.append("profilePic", credentialsStd.profile);
-      formData.append("jobRole", jobDetails.jobRole);
-      formData.append("link", window.location.href);
+      formData.append("jobRole", jobDetails.JobRole);
+      console.log(currentUrl);
+      formData.append("link", currentUrl);
       formData.append("company", companyName);
       formData.append("jobId", jobId);
+
+
+      
+
+
 
       let response = await axios.post(
         "http://localhost:80/api/candidateupload",
@@ -50,8 +70,7 @@ export const UploadCv = () => {
           },
         }
       );
-      console.log(response);
-      console.log(response.data.description);
+      
       console.log(response.data.success);
       if (response.data.success == true) {
         navigate("/success");
@@ -76,6 +95,7 @@ export const UploadCv = () => {
 
       // Update the state variables with the fetched data
       setJobDetails({ CD, JobRole, JD, BQ, JR });
+      
     } catch (error) {
       console.log(error);
     }
@@ -89,28 +109,80 @@ export const UploadCv = () => {
     const { name, value, files } = e.target;
 
     if (files) {
-      setCredentialsStd((prevData) => ({
-        ...prevData,
-        [name]: files[0],
-      }));
+     
+
+      const pdfFile = e.target.files[0];
+      console.log(pdfFile);
+   
+    console.log(pdfMaxSizeInBytes)
+    console.log(pdfFile.size);
+
+
+      if (pdfFile && pdfFile.size <= pdfMaxSizeInBytes) {
+        setCredentialsStd((prevData) => ({
+          ...prevData,
+          [name]: files[0],
+        }));
+
+        console.log(credentialsStd.cv);
+
+        if( credentialsStd.cv && credentialsStd.cv.size <= pdfMaxSizeInBytes){
+          console.log("yes")
+          console.log(subActive)
+          setMessage("");
+          setsubActive(false);
+        }
+
+        
+      } else {
+        
+        // Show an error message or perform any other desired action
+        console.log(`File size exceeds the limit ${pdfMaxSizeInBytes} `);
+        const uploadmessage = `File size exceeds the limit ${pdfMaxSizeInBytes/(1024*1024)} MB`;
+        setMessage(uploadmessage);
+      }
+
     } else {
       setCredentialsStd((prevData) => ({
         ...prevData,
         [name]: value,
       }));
     }
+
+
+
+
+
   };
 
   useEffect(() => {
     if (currentUrl) {
       const parts = currentUrl.split("/");
-      const Id = parts[parts.length - 1];
-      const name = parts[parts.length - 2];
+      // console.log(parts);
+      let Id = parts[parts.length - 1];
+      // console.log(Id);
+      if (Id.includes('%')){
+        Id = Id.replace(/%/g, ' ');
+        Id = Id.replace(/20/g, '');
+        // console.log(Id)
+      }
+
+      console.log(Id);
+      setJobId(Id)
+
+      let name = parts[parts.length - 2];
+      // console.log(name);
+      if (name.includes('%')){
+        name = name.replace(/%/g, ' ');
+        name = name.replace(/20/g, '');
+        // console.log(name)
+      }
       setJobId(Id);
       setCompanyName(name);
     }
 
     if (jobId) {
+      // console.log("hello");
       fetchCompanyData();
     }
   }, [jobId]);
@@ -136,6 +208,7 @@ export const UploadCv = () => {
               <p>
                 Job ID: <span>{jobId}</span>
               </p>
+             
               <h2>{companyName} Description</h2>
               <p>{jobDetails.CD}</p>
               <h2>Job Description</h2>
@@ -179,7 +252,9 @@ export const UploadCv = () => {
                 </label>
 
                 <label for="cv">
-                  Upload your CV (pdf)
+                  Upload your CV (pdf) 
+                  
+                  <p style={{"color": "red"}}>{message}</p> 
                   <input
                     type="file"
                     name="cv"
@@ -201,7 +276,8 @@ export const UploadCv = () => {
                 </label>
                 {/* <button className={styles.button}>Upload CV</button>
               <button className={styles.button}>Upload Profile Picture</button> */}
-                <button type="submit" className={styles.subButton}>
+              {subActive}
+                <button disabled={subActive} type="submit" className={styles.subButton}>
                   Submit
                 </button>
               </form>

@@ -100,7 +100,7 @@ router.post('/displayQuestions', async(req,res)=>{
         let data = req.body;
         // console.log(req.body);
        let response = await candidateDetail(data.id, data.company);
-      //  console.log(response.jobRole);
+       console.log(response.jobRole);
        
         // console.log("calling here 2 times");
        

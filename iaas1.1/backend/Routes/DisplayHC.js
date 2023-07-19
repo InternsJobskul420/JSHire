@@ -67,10 +67,10 @@ router.post('/createhiringcompany', async (req, res) => {
     try {
  
        let data = req.body;
-       // console.log(data);
+    //    console.log(data);
  
        let response = await HC.findOne({ email: data.email })
-       console.log(response)
+    //    console.log(response)
        // console.log(response.email)
        if (response === null ) {
  

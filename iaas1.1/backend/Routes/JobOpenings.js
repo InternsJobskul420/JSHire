@@ -9,7 +9,7 @@ connectDB();
 
 router.post('/displayjoblist', async(req,res)=>{
     try {
-        // console.log(req.body.companyName);
+        console.log(req.body.companyName);
         // console.log(req.body.companyName.length);
         let response = await JO.findOne({company: req.body.companyName})
         // console.log(response)
@@ -52,7 +52,7 @@ router.post('/displayjoblist', async(req,res)=>{
 
     } catch (error) {
         // res.json({success: false});
-        res.send(0)
+        console.log("error in connection", error)
     }
 
 })
