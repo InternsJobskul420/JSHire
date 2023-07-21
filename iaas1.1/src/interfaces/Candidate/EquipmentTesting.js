@@ -4,7 +4,7 @@ import styles from "./Candidate.module.css";
 import CandidateLayout from "../../components/CandidateLayout/CandidateLayout";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
-let stream;
+
 
 const EquipmentTesting = () => {
 
@@ -12,23 +12,50 @@ const EquipmentTesting = () => {
   const {id,company} = location.state;
   console.log(id,company); 
   console.log("hello");
-  const videoRef = useRef();
+  const videoRef = useRef(null);
+  let mediaStream = useRef();
 
   const [hasAccess, setHasAccess] = useState(false);
   const [audioLevel, setAudioLevel] = useState(0);
   const navigate = useNavigate();
 
+
+  
+  const stopUserMedia = (stream) => {
+    stream.getTracks().forEach((track) => {
+      track.stop();
+    });
+  }
+
   const startInterview = () => {
-    navigate("../candidateinterview",{state:{id:id, company:company}});
+
+    console.log(mediaStream);
+
+    
+    
+      stopUserMedia(mediaStream.current);
+    
+    // navigate("../candidateinterview",{state:{id:id, company:company}});
   };
 
   const startMediaStream = async (audio = true) => {
     try {
-      stream = await navigator.mediaDevices.getUserMedia({ video: true, audio });
+      
+      // const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: audio });
+      mediaStream.current = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
       setHasAccess(true);
       console.log(videoRef.current);
       console.log(videoRef.current.srcObject);
-      videoRef.current.srcObject = stream;
+      // videoRef.current.srcObject = stream;
+      videoRef.current.srcObject = mediaStream.current;
+      // console.log(stream);
+      console.log(mediaStream.current);
+      // stopUserMedia(mediaStream);
+
+      
+      
+      
+      
     } catch (error) {
       console.error('Error accessing camera and microphone:', error);
     }
@@ -44,11 +71,11 @@ const EquipmentTesting = () => {
       try {
         startMediaStream();
 
-        return () => {
-          stream.getTracks().forEach((track) => {
-            track.stop();
-          });
-        };
+        // return () => {
+        //   stream.getTracks().forEach((track) => {
+        //     track.stop();
+        //   });
+        // };
 
         // Microphone testing
         // const audioContext = new AudioContext();
@@ -71,6 +98,14 @@ const EquipmentTesting = () => {
         //   clearInterval(intervalId);
         //   audioContext.close();
         // };
+
+
+        return () => {
+          if (mediaStream) {
+            stopUserMedia(mediaStream);
+          }
+        };
+
       } catch (error) {
         if (error.name === "NotAllowedError") {
           // User blocked camera or microphone access
@@ -93,6 +128,10 @@ const EquipmentTesting = () => {
 
     getAccess();
   }, []);
+
+
+
+ 
 
   return (
     <>
@@ -119,11 +158,11 @@ const EquipmentTesting = () => {
                 Start Interview
               </button>
             </div>
-            {hasAccess && (
+            {/* {hasAccess && (
               <div className={styles.equipBody}>
               
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>
@@ -131,5 +170,5 @@ const EquipmentTesting = () => {
   );
 };
 
-export {stream};
+// export {stream};
 export default EquipmentTesting;

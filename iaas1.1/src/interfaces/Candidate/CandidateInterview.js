@@ -9,9 +9,9 @@ import styles from "./Candidate.module.css";
 // import sampleimage from "../../assets/video.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { faL } from "@fortawesome/free-solid-svg-icons";
-import { stream } from "./EquipmentTesting";
+// import { stream } from "./EquipmentTesting";
 
-console.log(stream);
+// console.log(stream);
 
 const CandidateInterview = () => {
 
@@ -224,14 +224,14 @@ let firstTimer = ()=>{
         video: true,
       });
 
-      console.log(stream);
+      // console.log(stream);
       console.log(stream2);
 
       if(stream2){
         console.log("assigning stream")
         console.log(candidateVideo.current)
         console.log(candidateVideo.current.srcObject);
-        // candidateVideo.current.srcObject = stream2;
+        candidateVideo.current.srcObject = stream2;
       }
       
      
@@ -377,7 +377,7 @@ let firstTimer = ()=>{
      
       clearInterval(intervalId); // Clear the interval when the component unmounts
     };
-  }, [questions, isIntervalActive, stream]);
+  }, [questions, isIntervalActive]);
 
 
 
