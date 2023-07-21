@@ -35,7 +35,7 @@ const EquipmentTesting = () => {
     
       stopUserMedia(mediaStream.current);
     
-    // navigate("../candidateinterview",{state:{id:id, company:company}});
+    navigate("../candidateinterview",{state:{id:id, company:company}});
   };
 
   const startMediaStream = async (audio = true) => {
