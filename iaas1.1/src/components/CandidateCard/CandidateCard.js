@@ -28,18 +28,14 @@ const CandidateCard = ({ name, college, imageUrl, id, jobRole,company, applicati
 
 
   return (
-    <div className={styles.card} style={{padding: "5px"}}>
-      <p className={styles.college}>ID:{id}</p>
-
-      <img   className={styles.image} />
+    <div className={styles.card}>
+      <img src={imageUrl} className={styles.image} />
       <h2 className={styles.name}>{name}</h2>
-      
-      <p className={styles.college}>{college}</p>
-     
+      <p className={styles.college}>ID:{id}</p>      
+      <p className={styles.collegeName}>{college}</p>     
       
       <button className={styles.button} onClick={handleDetails}>See Details</button>
       <button className={styles.copyLink}> {interviewLink ? <CopyLinkComponent link={Link} />:""}</button>
-     
     </div>
   );
 };

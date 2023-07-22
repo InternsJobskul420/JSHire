@@ -1,23 +1,18 @@
-import React from 'react'
-import CandidateLayout from '../CandidateLayout/CandidateLayout'
+import React from 'react';
 import CandidateShowMessage from '../CandidateShowMessage/CandidateShowMessage';
-
+import styles from './Success.module.css';
 
 const Success = () => {
-
   const heading = "Success!";
-  const description = "Your CV has been uploaded successfully";
-
+  const description = "Your CV has been uploaded successfully.";
 
   return (
-    <CandidateLayout>
-    <CandidateShowMessage header={heading} description={description} />
-   
-    
-   
-    
-    </CandidateLayout>
-  )
-}
+    <div className={styles.container}>
+      <div className={styles.cardContainer}>
+        <CandidateShowMessage header={heading} description={description} />
+      </div>
+    </div>
+  );
+};
 
-export default Success 
+export default Success;

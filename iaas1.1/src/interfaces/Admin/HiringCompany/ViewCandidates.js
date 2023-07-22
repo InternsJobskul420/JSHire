@@ -61,7 +61,7 @@ return(
   <><CandidateCard key={candidate._id} name={candidate.name} college={candidate.collegeName}  id={candidate._id} jobRole={jobRole}  applicationLink={applicationLink} company={company} interviewLink={candidate.interviewLink} /></>
 )
         })
-      :"No candidates have applied "}
+      : <p>No candidates have applied yet!</p> }
         
       </div>
     </>

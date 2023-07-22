@@ -4,7 +4,7 @@
   width: 18rem;
   border-radius: 1rem;
   margin: 2rem;
-  padding: 0;
+  padding: 2rem;
   transition: all ease 0.2s;
   background-color: white;
   display: flex;
@@ -20,8 +20,8 @@
 
 .image {
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 10rem;
+  height: 10rem;
   object-fit: cover;
 }
 
@@ -36,10 +36,13 @@
 .college {
   color: #a3a3a3;
   font-family: 'Raleway', sans-serif;
-  padding: 0 0.5rem;
   font-size: 0.9rem;
   text-align: center;
   margin-bottom: 1rem;
+}
+.collegeName{
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.2rem;
 }
 
 .button {
@@ -82,6 +85,10 @@
   color: rgb(31, 27, 27);
   /* border: solid 2px black; */
   width: 50%;
-  
+  font-weight: 1000;
   background-color: transparent;
+}
+
+.copyLink:hover{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

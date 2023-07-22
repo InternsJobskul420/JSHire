@@ -1,0 +1,14 @@
+/* Success.module.css */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .cardContainer {
+    padding: 2rem;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+  }
+  

@@ -1,4 +1,4 @@
-#candidate-message{
+#candidate-message {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,8 +6,8 @@
     font-family: Raleway;
     margin: 0rem 5rem;
 }
-#header{
-   
+
+#header {
     color: #056FC6;
     padding: 1rem;
     font-weight: 700;
@@ -16,9 +16,11 @@
     font-size: 2rem;
     /* border: 2px solid brown; */
 }
-#description{
+
+#description {
     font-weight: 500;
     width: 70%;
     text-align: center;
+    padding-bottom: 1rem;
     /* border: 2px solid blue; */
 }
