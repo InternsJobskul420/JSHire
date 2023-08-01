@@ -1,10 +1,3 @@
-# Dependencies downloaded
-
-### npm install bcryptjs
-### npm install react-icons
-### npm i axios
-
--------------------------------------------------------------------------------------------------------------------------
 
 # Styling convention for JSHire
 
